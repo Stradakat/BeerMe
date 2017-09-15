@@ -1,0 +1,15 @@
+.recBar {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.ant-card{
+	width: 200px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.beerImg{
+	height: 200px;
+}
