@@ -13,6 +13,7 @@ class App extends Component {
     return (
       <div>
           <Header />
+          
           <h1>Beer Me</h1>
           <div class="main-wrapper">
             <img src={cheers} />
