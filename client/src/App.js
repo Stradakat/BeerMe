@@ -14,7 +14,7 @@ class App extends Component {
       <div>
           <Header />
           <h1>Beer Me</h1>
-          <div>
+          <div class="main-wrapper">
             <img src={cheers} />
           </div>
 
