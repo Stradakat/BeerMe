@@ -20,7 +20,7 @@ class Header extends Component {
             <header>
                 <nav>
                     <ul>
-                        <li class="logo"><a href="#"><i class="fa fa-file-code-o" aria-hidden="true"></i></a></li>
+                        <li className="logo"><a href="#"><i className="fa fa-file-code-o" aria-hidden="true"></i></a></li>
                         <li><a href="#">About></a></li>
                         <li><a href="#">Contact></a></li>
                     </ul>
