@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Reclist from "./components/reclist.js"
 // import logo from './logo.svg';
 import './App.css';
 import cheers from './cheers.jpg';
