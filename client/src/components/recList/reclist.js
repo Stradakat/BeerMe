@@ -5,6 +5,7 @@ import './reclist.css'
 
 class RecList extends Component {
 	state = {
+		chosenModal: {},
 		visible: false,
 		toTry: [{
 				type: "Random Beer",
@@ -38,14 +39,13 @@ class RecList extends Component {
 
 
 	createCards(h) {
-		console.log(h)
 		let reccomends = []
 
 		for (let i = 0; i < this.state.toTry[h].recs.length; i++){
 			let beerRec = this.state.toTry[h].recs[i]
 			reccomends.push(
 				<div key={i}>
-					<Card bordered={false} onClick={this.showModal.bind(h, i)} data-type={h} data-beer={i}>
+					<Card bordered={false} onClick={() => this.showModal(beerRec)}>
 						<div>
 							<img className="beerImg" src={beerRec.pic} alt="beer"></img>
 						</div>
@@ -79,11 +79,10 @@ class RecList extends Component {
 	}
 
 
-	showModal = (type, beer) => {
-		console.log("Type = "+type)
-		console.log("beer = "+beer)
+	showModal = (beer) => {
 	    this.setState({
 	   		visible: true,
+	   		chosenModal: beer
 	   	});
   	}
 
@@ -99,12 +98,17 @@ class RecList extends Component {
 	    });
 	}
 
+	modalTest = () => {
+		console.log(this.state)
+	}
+
 	render() {
 
 	    return (
 	    	<div>
 		    	{this.createRows()}
 		    	<Modal 
+		    		title={this.state.chosenModal.name}
 		    		visible={this.state.visible}
 		    		onOk={this.handleOk}
 		    		onCancel={this.handleCancel}
@@ -112,6 +116,16 @@ class RecList extends Component {
             			<Button key="back" size="large" onClick={this.handleCancel}>Return</Button>,
           			]}>
 
+     				<div>
+     					<Card onClick={this.modalTest} >
+							<div>
+								<img className="beerImg" src={this.state.chosenModal.pic} alt="beer"></img>
+							</div>
+							<div className="rating">
+								<Rate character={<Icon type="smile" />} defaultValue={this.state.chosenModal.like}/>
+							</div>
+						</Card>
+     				</div>
         		</Modal>
 		    </div>
 		    
