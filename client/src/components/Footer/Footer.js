@@ -5,14 +5,12 @@ class Footer extends Component {
     constructor() {
         super();
 
-
     }
-
     render() {
         return (
             <footer>
-            <h3>BeerMe Footer</h3>
-        </footer>
+                <h3>BeerMe Footer</h3>
+            </footer>
         );
     }
 }

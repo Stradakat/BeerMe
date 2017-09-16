@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Reclist from "./components/reclist.js"
 // import logo from './logo.svg';
 import './App.css';
 import cheers from './cheers.jpg';
@@ -13,7 +14,7 @@ class App extends Component {
       <div>
           <Header />
           <h1>Beer Me</h1>
-          <div>
+          <div class="main-wrapper">
             <img src={cheers} />
           </div>
 
