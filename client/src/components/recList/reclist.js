@@ -38,13 +38,14 @@ class RecList extends Component {
 
 
 	createCards(h) {
+		console.log(h)
 		let reccomends = []
 
 		for (let i = 0; i < this.state.toTry[h].recs.length; i++){
 			let beerRec = this.state.toTry[h].recs[i]
 			reccomends.push(
 				<div key={i}>
-					<Card bordered={false} onClick={this.showModal.bind(h, i)}>
+					<Card bordered={false} onClick={this.showModal.bind(h, i)} data-type={h} data-beer={i}>
 						<div>
 							<img className="beerImg" src={beerRec.pic} alt="beer"></img>
 						</div>
@@ -78,8 +79,9 @@ class RecList extends Component {
 	}
 
 
-	showModal = (h, i) => {
-		console.log(h, i)
+	showModal = (type, beer) => {
+		console.log("Type = "+type)
+		console.log("beer = "+beer)
 	    this.setState({
 	   		visible: true,
 	   	});
