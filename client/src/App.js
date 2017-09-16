@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Reclist from "./components/reclist.js"
-import { Parallax } from 'react-materialize'
 import './App.css';
 
 class App extends Component {
@@ -8,8 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <Parallax imageSrc="https://cdn.someecards.com/posts/72hWcarbonation.gif"/>
-          <h2>Welcome to React</h2>
+          <h2>Welcome to BeerME!</h2>
         </div>
 
         <Reclist />
