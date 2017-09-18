@@ -16,5 +16,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "less-vars-to-js": "^1.2.0",
+    "style-loader": "^0.18.2"
   }
 }

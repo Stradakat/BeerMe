@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Rate, Icon, Modal, Button } from 'antd';
 import 'antd/dist/antd.css';
-import './reclist.css'
+import './reclist.css';
+import './less.js';
 
 class RecList extends Component {
 	state = {
@@ -37,6 +38,9 @@ class RecList extends Component {
 			}]
 	}
 
+	rating(beer) {
+		console.log(beer)
+	}
 
 	createCards(h) {
 		let reccomends = []
@@ -45,12 +49,12 @@ class RecList extends Component {
 			let beerRec = this.state.toTry[h].recs[i]
 			reccomends.push(
 				<div key={i}>
-					<Card bordered={false} onClick={() => this.showModal(beerRec)}>
+					<Card bordered={false}>
 						<div>
-							<img className="beerImg" src={beerRec.pic} alt="beer"></img>
+							<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
 						</div>
 						<div className="rating">
-							<Rate character={<Icon type="smile" />} defaultValue={beerRec.like}/>
+							<Rate character={<Icon type="smile" />} defaultValue={beerRec.like} onClick={() => this.rating(beerRec)} />
 						</div>
 					</Card>
 				</div>
