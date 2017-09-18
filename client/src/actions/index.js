@@ -1,11 +1,12 @@
-export const REQUEST_BEERS = 'REQUEST_BEERS'
-export const RECEIVE_BEERS = 'RECEIVE_BEERS'
-export const SELECT_BREWERY = 'SELECT_BREWERY'
-export const RECEIVE_RECOMMENDATIONS = 'RECEIVE_RECOMMENDATIONS'
+import axios from 'axios';
+export const REQUEST_BEERS = 'REQUEST_BEERS';
+export const RECEIVE_BEERS = 'RECEIVE_BEERS';
+export const REQUEST_BREWERY = 'REQUEST_BREWERY';
+export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
 
 export const requestBeers = user => ({
   "type": REQUEST_BEERS,
-  user
+  "payload": axios("http://localhost:3001/API/recommendations")
 })
 
 export const receiveBeers = (user) => ({
@@ -13,12 +14,12 @@ export const receiveBeers = (user) => ({
   user
 })
 
-export const selectBrewery = (user) => ({
-  "type": SELECT_BREWERY,
+export const requestBrewery = (user) => ({
+  "type": REQUEST_BREWERY,
   user
 })
 
-export const receiveRecommendations = (user) => ({
-  "type": RECEIVE_RECOMMENDATIONS,
+export const receiveBrewery = (user) => ({
+  "type": RECEIVE_BREWERY,
   user
 })
