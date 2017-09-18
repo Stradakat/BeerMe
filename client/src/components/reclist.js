@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Card, Rate, Icon, Modal, Button } from 'antd';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 import 'antd/dist/antd.css';
-import './reclist.css'
+import './reclist.css';
 
 class RecList extends Component {
 	state = {
@@ -100,20 +102,20 @@ class RecList extends Component {
 	render() {
 
 	    return (
-	    	<div>
-		    	{this.createRows()}
-		    	<Modal 
-		    		visible={this.state.visible}
-		    		onOk={this.handleOk}
-		    		onCancel={this.handleCancel}
-		    		footer={[
-            			<Button key="back" size="large" onClick={this.handleCancel}>Return</Button>,
-          			]}>
+			<div>
+				<Header />
+					{this.createRows()}
+					<Modal 
+						visible={this.state.visible}
+						onOk={this.handleOk}
+						onCancel={this.handleCancel}
+						footer={[
+							<Button key="back" size="large" onClick={this.handleCancel}>Return</Button>,
+						]}>
 
-        		</Modal>
+					</Modal>
+				<Footer />
 		    </div>
-		    
-		    
 	    );
 	}
 }
