@@ -54,7 +54,7 @@ class RecList extends Component {
 							<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
 						</div>
 						<div className="rating">
-							<Rate character={<Icon type="smile" />} defaultValue={beerRec.like} onClick={() => this.rating(beerRec)} />
+							<Rate character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={() => this.rating(value: number)} />
 						</div>
 					</Card>
 				</div>
@@ -102,9 +102,6 @@ class RecList extends Component {
 	    });
 	}
 
-	modalTest = () => {
-		console.log(this.state)
-	}
 
 	render() {
 
@@ -126,7 +123,7 @@ class RecList extends Component {
 								<img className="beerImg" src={this.state.chosenModal.pic} alt="beer"></img>
 							</div>
 							<div className="rating">
-								<Rate character={<Icon type="smile" />} defaultValue={this.state.chosenModal.like}/>
+								<Rate character={<Icon type="smile" />} defaultValue={this.state.chosenModal.like} />
 							</div>
 						</Card>
      				</div>
