@@ -1,3 +1,4 @@
+
 .recBar {
 	width: 100%;
 	display: flex;
@@ -8,8 +9,19 @@
 	width: 200px;
 	margin-right: 5px;
 	margin-left: 5px;
+	z-index: 0;
 }
+
 
 .beerImg{
 	height: 200px;
+	width: auto;
+}
+
+.rating {
+	z-index: 10;
+}
+
+.ant-rate-star-full{
+	color: red;
 }
