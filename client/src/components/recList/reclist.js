@@ -13,36 +13,43 @@ class RecList extends Component {
 				recs: [{
 						name: "PBR",
 						like: 4,
-						pic: "https://dydza6t6xitx6.cloudfront.net/ci_1143.jpg"
+						pic: "https://dydza6t6xitx6.cloudfront.net/ci_1143.jpg",
+						reviewed: false
 					},
 					{
 						name: "Duff",
 						like: 3,
-						pic: "http://res.cloudinary.com/ratebeer/image/upload/w_250,c_limit/beer_112699.jpg"
+						pic: "http://res.cloudinary.com/ratebeer/image/upload/w_250,c_limit/beer_112699.jpg",
+						reviewed: false
 					},
 					{
 						name: "Budweiser",
 						like: 2,
-						pic: "https://dydza6t6xitx6.cloudfront.net/ci_2822.jpg"
+						pic: "https://dydza6t6xitx6.cloudfront.net/ci_2822.jpg",
+						reviewed: false
 					},
 					{
 						name: "Bud Light",
 						like: 5,
-						pic: "http://www.totalwine.com/media/sys_master/twmmedia/h78/hf8/9770809884702.png"
+						pic: "http://www.totalwine.com/media/sys_master/twmmedia/h78/hf8/9770809884702.png",
+						reviewed: false
 					},
 					{
 						name: "Coors",
 						like: 4,
-						pic: "https://onlinecashandcarry.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/o/sol_beer_nrb_330ml.jpg"
+						pic: "https://onlinecashandcarry.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/o/sol_beer_nrb_330ml.jpg",
+						reviewed: false
 					}]
 			}]
 	}
 
-	rating(beer) {
-		console.log(beer)
+	rating(type, beer, rate) {
+		this.state.toTry[type].recs[beer].like = rate
+		this.state.toTry[type].recs[beer].reviewed = true
 	}
 
 	createCards(h) {
+
 		let reccomends = []
 
 		for (let i = 0; i < this.state.toTry[h].recs.length; i++){
@@ -54,7 +61,7 @@ class RecList extends Component {
 							<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
 						</div>
 						<div className="rating">
-							<Rate character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={() => this.rating(value: number)} />
+							<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
 						</div>
 					</Card>
 				</div>
@@ -123,7 +130,7 @@ class RecList extends Component {
 								<img className="beerImg" src={this.state.chosenModal.pic} alt="beer"></img>
 							</div>
 							<div className="rating">
-								<Rate character={<Icon type="smile" />} defaultValue={this.state.chosenModal.like} />
+								<Rate className={this.state.chosenModal.reviewed ? "reviewed" : "notReviewed"} character={<Icon type="smile" />} defaultValue={this.state.chosenModal.like} />
 							</div>
 						</Card>
      				</div>

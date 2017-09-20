@@ -1,5 +1,5 @@
-var less = require('less');
+import less from 'less';
 
-less.modifyVars({
+export default less.modifyVars({
   '@rate-star-color': 'red'
 });
