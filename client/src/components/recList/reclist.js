@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Card, Rate, Icon, Modal, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './reclist.css';
-import './less.js';
 
 class RecList extends Component {
 	state = {
