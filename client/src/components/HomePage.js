@@ -4,6 +4,8 @@ import Footer from './Footer/Footer';
 import cheers from './cheers.jpg';
 // import { Button } from 'antd';
 import 'antd/dist/antd.css';
+import { Parallax } from 'react-materialize';
+import '../index.css';
 
 class HomePage extends Component {
 
@@ -17,10 +19,7 @@ class HomePage extends Component {
             <div>
                 <Header />
 
-                <h1>Beer Me</h1>
-                <div class="main-wrapper">
-                <img src={cheers} alt="prost!"/>
-                </div>
+                    <img id="jumbo" src={cheers} />
                 
                 <Footer />
             </div>
