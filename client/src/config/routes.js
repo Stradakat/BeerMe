@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'; // use BrowserRouter to create, Route sets up individual pages
 import HomePage from './../components/HomePage';
-import RecList from './../components/reclist';
+import RecList from './../components/recList/reclist';
 
 // break out into own component eventually, or redirect to valid page
 const NotFoundPage = () => (
