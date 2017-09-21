@@ -12,7 +12,6 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Reclist />
           
           <Header />
           <h1>Beer Me</h1>
