@@ -1,3 +1,7 @@
+#emptySpace{
+	position: static;
+	height: 150px;
+}
 
 .recBar {
 	width: 100%;
