@@ -3,15 +3,25 @@ import { Button, Icon } from 'antd';
 import logo from './beer.png';
 import 'antd/dist/antd.css';
 import "./Header.css";
+import { connect } from 'react-redux';
+import { startLogin, startLogout } from '../../actions/auth';
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        startLogin: () => dispatch(startLogin()),
+        startLogout: () => dispatch(startLogout())
+    }
+}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         startLogout: () => dispatch(startLogout())
+//     }
+// }
 
 class Header extends Component {
 
-    constructor() {
-      super();
-
-    //   this.state = {
-    //     isActive: false
-    //   };
+    constructor(props) {
+      super(props);
 
     this.state = {
         size: 'large',
@@ -31,7 +41,7 @@ class Header extends Component {
                 </div>
                 <nav>
                     <ul id="menu">
-                        <li><Button id="loginBtn" type="primary" size={size}><Icon type="login" />Login</Button></li>
+                        <li><Button onClick={this.props.startLogin} id="loginBtn" type="primary" size={size}><Icon type="login" />Login</Button></li>
                         <li><a className="menuWord" href="#">About</a></li>
                         <li><a className="menuWord" href="#">Contact</a></li>
                     </ul>
@@ -42,4 +52,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default connect(undefined, mapDispatchToProps)(Header);
