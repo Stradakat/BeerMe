@@ -25,6 +25,7 @@
     "babel-plugin-import": "^1.4.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "history": "^4.7.2",
     "mongoose": "^4.11.10",
     "react-materialize": "^1.0.14",
     "react-parallax": "^1.4.4",
