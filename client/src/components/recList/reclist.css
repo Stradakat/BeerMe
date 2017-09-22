@@ -33,3 +33,11 @@
 .reviewed .ant-rate-star-half .ant-rate-star-first, .blah .ant-rate-star-full .ant-rate-star-second {
 	color: blue;
 }
+
+#menu ul li a{
+	visibility: hidden;
+}
+
+.active {
+	visibility: visible;
+}
