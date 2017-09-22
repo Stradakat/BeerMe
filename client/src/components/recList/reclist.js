@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Rate, Icon, Modal, Button } from 'antd';
+import Header from '../Header';
+import Footer from '../Footer';
 import 'antd/dist/antd.css';
 import './reclist.css';
 
@@ -113,7 +115,8 @@ class RecList extends Component {
 
 	    return (
 	    	<div>
-		    	{this.createRows()}
+	    		<Header />
+		    		{this.createRows()}
 		    	<Modal 
 		    		title={this.state.chosenModal.name}
 		    		visible={this.state.visible}
@@ -134,8 +137,9 @@ class RecList extends Component {
 						</Card>
      				</div>
         		</Modal>
+
+        		<Footer />
 		    </div>
-		    
 		    
 	    );
 	}

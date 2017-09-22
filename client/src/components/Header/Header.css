@@ -12,23 +12,41 @@ a {
 }
 
 header {
-    color: #9f9c9c;
-    padding: 20px 0;
-    margin-bottom: 25px;
+    position: absolute;
+    color:  #266a2e;
+    padding-bottom: 20px 0;
+    /*margin-bottom: 25px;*/
     text-transform: uppercase;
-    border-bottom: 2px solid #b0e0ea;
+    border-bottom: 2px solid  #266a2e;
     display: flex;
     justify-content: space-between;
+    background-color: #f0d86e;
+    box-shadow: 0 0px 10px black;
+    z-index: 2;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+}
+
+
+header nav{
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 header nav ul {
-    display: flex;
-    align-items: baseline;
     list-style-type: none;
+    display: flex;
+    justify-content: center;
 }
 
 header nav li {
     margin-right: 15px;
+    color: #266a2e;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Ropa Sans', sans-serif;
 }
 
 header button {
@@ -39,4 +57,28 @@ header button {
     cursor: pointer;
     border-radius: 1.25rem;
     background-color: #51bb7b;
+}
+
+#logoImg {
+    max-height: 150px;
+    width: auto;
+    margin-bottom: -75px;
+    margin-top: 5px;
+}
+
+#appName {
+    font-family: 'Germania One', cursive;
+    font-size: 75px;
+    color: #266a2e;
+}
+
+#logoDiv {
+    display: flex;
+    max-width: 50%;
+}
+
+#appDiv p {
+    margin-top: -25px;
+    font-family: 'Germania One', cursive;
+    font-size: 20px;
 }
