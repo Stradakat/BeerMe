@@ -6,6 +6,7 @@ import cheers from './cheers.jpg';
 import 'antd/dist/antd.css';
 import { Parallax } from 'react-materialize';
 import '../index.css';
+import Beers from './../containers/beers'
 
 class HomePage extends Component {
 
@@ -18,9 +19,8 @@ class HomePage extends Component {
 		return (
             <div>
                 <Header />
-
                     <img id="jumbo" src={cheers} />
-                
+                <Beers />
                 <Footer />
             </div>
         )
