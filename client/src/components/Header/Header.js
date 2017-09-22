@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 class Header extends Component {
 
     constructor(props) {
-      super(props);
+        super(props);
 
     this.state = {
         size: 'large',
@@ -30,10 +30,28 @@ class Header extends Component {
       };
     };
 
+    userLoc(){
+        if (window.location.pathname === "/"){
+            return (
+                <Button onClick={this.props.startLogin} id="loginBtn" type="primary" size={this.state.size}>
+                        <Icon type="login" />Login
+                </Button>
+            )
+        } else {
+            return (
+                <ul id="menu">
+                    <li><a className="menuWord" href="#">Profile</a></li>
+                    <li><a className="menuWord" href="#">Reccomendations</a></li>
+                    <li><a className="menuWord" href="#">Breweries</a></li>
+                </ul>
+            )
+        }
+    }
+
     render() {
         const size = this.state.size;
 		return (
-            <header id="headerBar">
+            <header id="headerBar" to="/">
                 <div id="logoDiv">
                     <img id="logoImg" src={logo} />
                     <div id="appDiv">
@@ -42,6 +60,7 @@ class Header extends Component {
                     </div>
                 </div>
                 <nav>
+<<<<<<< HEAD
                     <ul id="menu">
                         <li>
                             <div>
@@ -55,6 +74,9 @@ class Header extends Component {
                         <li><a className="menuWord" href="#">About</a></li>
                         <li><a className="menuWord" href="#">Contact</a></li>
                     </ul>
+=======
+                    {this.userLoc()}
+>>>>>>> 66a10ad7d94b78913c1effbad427acbdbe78ab0c
                 </nav>
             </header>
         )

@@ -116,6 +116,7 @@ class RecList extends Component {
 	    return (
 	    	<div>
 	    		<Header />
+	    		<div id="emptySpace"></div>
 		    		{this.createRows()}
 		    	<Modal 
 		    		title={this.state.chosenModal.name}
