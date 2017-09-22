@@ -6,7 +6,8 @@ class Beers extends React.Component {
     this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentDidMount() {
-	console.log(this.props);
+    console.log("component mounted")
+    console.log(this.props);
     this.props.requestBeers();
   }
   render() {

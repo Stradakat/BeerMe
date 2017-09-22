@@ -3,6 +3,20 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'; // use BrowserRou
 import HomePage from './../components/HomePage';
 import RecList from './../components/recList/reclist';
 
+//Redux stuff
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import rootReducer from './../reducers'
+import promise from 'redux-promise-middleware';
+
+const middleware = [ thunk ]
+
+const store = createStore(
+	rootReducer,
+	applyMiddleware(...middleware, promise())
+)
+
 // break out into own component eventually, or redirect to valid page
 const NotFoundPage = () => (
     <div>
@@ -12,13 +26,15 @@ const NotFoundPage = () => (
 
 // <Switch> will stop when it hits a valid url, otherwise will show the NotFoundPage
 const routes = (
-    <BrowserRouter>
-        <Switch>
-            <Route path="/" component={HomePage} exact={true}/>
-            <Route path="/reclist" component={RecList} />
-            <Route component={NotFoundPage} />
-        </Switch>
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" component={HomePage} exact={true}/>
+                <Route path="/reclist" component={RecList} />
+                <Route component={NotFoundPage} />
+            </Switch>
+        </BrowserRouter>
+    </Provider>
 );
 
 export default routes;
