@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "antd": "^2.13.1",
+    "async": "^2.5.0",
     "axios": "^0.16.2",
     "babel-plugin-import": "^1.4.0",
     "body-parser": "^1.17.2",
