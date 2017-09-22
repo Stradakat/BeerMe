@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import {REQUEST_BEERS, RECEIVE_BEERS, REQUEST_BREWERY, RECEIVE_BREWERY} from '../actions'
+import { combineReducers } from 'redux';
+import {REQUEST_BEERS, RECEIVE_BEERS, REQUEST_BREWERY, RECEIVE_BREWERY} from '../actions/index';
 
 const initialState = {
 	"beers": [],
@@ -34,9 +34,24 @@ const receiveItems = (state = initialState, action) => {
 			return state
 	}
 }
+
+const authReducer = (state = {}, action) => {
+    switch (action.type) {
+        case 'LOGIN':
+            return {
+                uid: action.uid
+            }
+        case 'LOGOUT':
+            return {};
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
 	requestItems,
-	receiveItems
+	receiveItems,
+	authReducer
 })
 
 export default rootReducer
