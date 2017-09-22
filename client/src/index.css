@@ -1,16 +1,4 @@
-img {
-  /* height: 100%; */
-  width: 50%;
-  /* flex: 1; */
-  background-size: cover;
-}
-
-.body-wrapper {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.main-wrapper {
-  flex: 1;
+#jumbo {
+	width: 100%;
+	margin-top: 118px;
 }

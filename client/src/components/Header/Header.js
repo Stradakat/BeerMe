@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from 'antd';
+import logo from './beer.png';
 import 'antd/dist/antd.css';
 import "./Header.css";
 
@@ -20,15 +21,22 @@ class Header extends Component {
     render() {
         const size = this.state.size;
 		return (
-            <header>
+            <header id="headerBar">
+                <div id="logoDiv">
+                    <img id="logoImg" src={logo} />
+                    <div id="appDiv">
+                        <h1 id="appName">Beertentious</h1>
+                        <p>I don't drink that swill</p>
+                    </div>
+                </div>
                 <nav>
-                    <ul>
-                        <li className="logo"><a href="#"><i className="fa fa-file-code-o"></i></a></li>
-                        <li><a href="#">About></a></li>
-                        <li><a href="#">Contact></a></li>
+                    <ul id="menu">
+                        <li><Button type="primary" size={size}>Login</Button></li>
+                        <li><a className="menuWord" href="#">About</a></li>
+                        <li><a className="menuWord" href="#">Contact</a></li>
                     </ul>
                 </nav>
-                <Button type="primary" size={size}>Login</Button>
+                
             </header>
         )
     }
