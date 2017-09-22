@@ -3,9 +3,10 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import cheers from './cheers.jpg';
 // import { Button } from 'antd';
-import 'antd/dist/antd.css';
-import { Parallax } from 'react-materialize';
-import '../index.css';
+// import 'antd/dist/antd.css';
+// import { Parallax } from 'react-materialize';
+// import '../index.css';
+import Jumbo from './HomeIn.js'
 
 class HomePage extends Component {
 
@@ -18,9 +19,7 @@ class HomePage extends Component {
 		return (
             <div>
                 <Header />
-
-                    <img id="jumbo" src={cheers} />
-                
+                <Jumbo />
                 <Footer />
             </div>
         )
