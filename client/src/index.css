@@ -1,4 +1,9 @@
-#jumbo {
-	width: 100%;
-	margin-top: 118px;
+.react-parallax {
+	margin-top: 116px;
+	height: 400px;
+}
+
+.content {
+	font-family: 'Ropa Sans', sans-serif;
+	font-size: 25px;
 }
