@@ -17,7 +17,8 @@ export const store = createStore(
 	rootReducer,
 	applyMiddleware(...middleware, promise())
 )
-// can use our own history instead of BrowserRouter history
+
+// use our own history instead of BrowserRouter history
 export const history = createHistory();
 
 // break out into own component eventually, or redirect to valid page
@@ -32,7 +33,7 @@ export const routes = (
     <Provider store={store}>
         <Router history={history}>
             <Switch>
-                <Route path="/" component={HomePage} exact={true}/>
+                <Route path="/" component={HomePage} exact={true} />
                 <Route path="/reclist" component={RecList} />
                 <Route component={NotFoundPage} />
             </Switch>
