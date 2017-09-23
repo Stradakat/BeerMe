@@ -6,4 +6,6 @@
 .content {
 	font-family: 'Ropa Sans', sans-serif;
 	font-size: 25px;
+	width: 80%;
+	margin: 0 auto;
 }

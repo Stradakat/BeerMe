@@ -4,34 +4,54 @@ import logo from './beer.png';
 import 'antd/dist/antd.css';
 import "./Header.css";
 import { connect } from 'react-redux';
-import { startLogin, startLogout } from '../../actions/auth';
+import { startLogin, startLogout } from '../../actions/index';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startLogin: () => dispatch(startLogin()),
-        startLogout: () => dispatch(startLogout())
+//         // console.log('inside mapdispatchtoProps')
+        startLogin: () => dispatch(startLogin())
+//         startLogout:() => dispatch(startLogout())
     }
 }
-// const mapDispatchToProps = (dispatch) => {
+
+// const mapStateToProps = (state) => {
 //     return {
-//         startLogout: () => dispatch(startLogout())
-//     }
-// }
+//       isLoggedIn: this.state.isLoggedIn
+//   }
 
 class Header extends Component {
 
     constructor(props) {
-      super(props);
+        super(props);
 
     this.state = {
         size: 'large',
+        isLoggedIn: false
       };
     };
+
+    userLoc(){
+        if (window.location.pathname === "/"){
+            return (
+                <Button onClick={this.props.startLogin} id="loginBtn" type="primary" size={this.state.size}>
+                        <Icon type="login" />Login
+                </Button>
+            )
+        } else {
+            return (
+                <ul id="menu">
+                    <li><a className="menuWord" href="#">Profile</a></li>
+                    <li><a className="menuWord" href="#">Reccomendations</a></li>
+                    <li><a className="menuWord" href="#">Breweries</a></li>
+                </ul>
+            )
+        }
+    }
 
     render() {
         const size = this.state.size;
 		return (
-            <header id="headerBar">
+            <header id="headerBar" to="/">
                 <div id="logoDiv">
                     <img id="logoImg" src={logo} />
                     <div id="appDiv">
@@ -40,13 +60,24 @@ class Header extends Component {
                     </div>
                 </div>
                 <nav>
+<<<<<<< HEAD
                     <ul id="menu">
-                        <li><Button onClick={this.props.startLogin} id="loginBtn" type="primary" size={size}><Icon type="login" />Login</Button></li>
+                        <li>
+                            <div>
+                                {this.state.isLoggedIn ? (
+                                    <Button onClick={this.props.startLogout} id="loginBtn" type="primary" size={size}><Icon type="logout" />Logout</Button>
+                                ) : (
+                                    <Button onClick={this.props.startLogin} id="loginBtn" type="primary" size={size}><Icon type="login" />Login</Button>
+                                )}
+                            </div>
+                        </li>
                         <li><a className="menuWord" href="#">About</a></li>
                         <li><a className="menuWord" href="#">Contact</a></li>
                     </ul>
+=======
+                    {this.userLoc()}
+>>>>>>> 66a10ad7d94b78913c1effbad427acbdbe78ab0c
                 </nav>
-                
             </header>
         )
     }

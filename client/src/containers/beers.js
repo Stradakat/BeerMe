@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Beers from '../components/beers';
-import {requestBeers} from '../actions';
+import {requestBeers} from '../actions/index';
 
 const mapStateToProps = (state) => ({
   data: state,
