@@ -11,6 +11,7 @@ const Survey = require('../models/Survey');
 const brewerydb_URL = "https://api.brewerydb.com/v2";
 const async = require('async');
 const fetch = require('node-fetch');
+const path = require('path');
 let beerQuestions = [];
 
 // API routes to run server side data
