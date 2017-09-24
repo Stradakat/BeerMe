@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
+  "engines": {
+    "node": ">= 7.6.0"
+  },
   "dependencies": {
     "antd": "^2.13.1",
     "firebase": "^4.4.0",
