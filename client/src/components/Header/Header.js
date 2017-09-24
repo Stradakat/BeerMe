@@ -60,7 +60,6 @@ class Header extends Component {
                     </div>
                 </div>
                 <nav>
-<<<<<<< HEAD
                     <ul id="menu">
                         <li>
                             <div>
@@ -74,9 +73,6 @@ class Header extends Component {
                         <li><a className="menuWord" href="#">About</a></li>
                         <li><a className="menuWord" href="#">Contact</a></li>
                     </ul>
-=======
-                    {this.userLoc()}
->>>>>>> 66a10ad7d94b78913c1effbad427acbdbe78ab0c
                 </nav>
             </header>
         )
