@@ -5,14 +5,28 @@ export const RECEIVE_BEERS = 'RECEIVE_BEERS';
 export const REQUEST_BREWERY = 'REQUEST_BREWERY';
 export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
 
+export const requestBeers = () => {
+  return dispatch => {
+    axios.get("http://localhost:3001/API/survey3")
+      .then(res => {
+        console.log(res.data)
+        const beers = res.data.map(beer => {
+          console.log(beer)          
+          return beer
+        })
+        dispatch(receiveBeers(beers));
+      })
+  }
+}
+/*
 export const requestBeers = user => ({
   "type": REQUEST_BEERS,
-  "payload": axios("http://localhost:3001/API/recommendations")
+  "payload": axios("http://localhost:3001/API/survey3")
 })
-
-export const receiveBeers = (user) => ({
+*/
+export const receiveBeers = (beers) => ({
   "type": RECEIVE_BEERS,
-  user
+  "payload": beers
 })
 
 export const requestBrewery = (user) => ({

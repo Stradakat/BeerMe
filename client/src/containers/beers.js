@@ -14,9 +14,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const BeersContainer = connect(
+const RecListContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Beers)
 
-export default BeersContainer;
+export default RecListContainer;
