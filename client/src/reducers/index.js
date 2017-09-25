@@ -85,7 +85,11 @@ const receiveItems = (state = initialState, action) => {
 	}
 }
 
+<<<<<<< HEAD
+const auth = (state = {}, action) => {
+=======
 const authReducer = (state = initialState, action) => {
+>>>>>>> 2a7e19d4af9c03f17399ef3fe6879a00410f8f5f
     switch (action.type) {
         case 'LOGIN':
             return {
@@ -101,7 +105,7 @@ const authReducer = (state = initialState, action) => {
 const rootReducer = combineReducers({
 	requestItems,
 	receiveItems,
-	authReducer
+	auth
 })
 
 export default rootReducer
