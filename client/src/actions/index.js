@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { firebase, googleAuthProvider } from '../firebase/firebase';
+import { Firebase, googleAuthProvider } from '../firebase/firebase';
+// import createHistory from 'history/createBrowserHistory';
 export const REQUEST_BEERS = 'REQUEST_BEERS';
 export const RECEIVE_BEERS = 'RECEIVE_BEERS';
 export const REQUEST_BREWERY = 'REQUEST_BREWERY';
 export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
+
 
 export const requestBeers = user => ({
   "type": REQUEST_BEERS,
@@ -25,11 +27,14 @@ export const receiveBrewery = (user) => ({
   user
 })
 
-// start login authentication
+// const history = createHistory();
+
+// start login popup
 export const startLogin = () => {
   return () => {
-      return firebase.auth().signInWithPopup(googleAuthProvider)
+      return Firebase.auth().signInWithPopup(googleAuthProvider)
       .then((result) => {
+      // history.push('/reclist');
         // const token = result.credential.accessToken
         // console.log(token);
         window.location.href = '/reclist';
@@ -39,10 +44,9 @@ export const startLogin = () => {
   };
 };
 
-// start logout
 export const startLogout = () => {
   return () => {
-      return firebase.auth().signOut()
+      return Firebase.auth().signOut()
       .then((result) => {
         window.location.href = '/';
       });
@@ -50,15 +54,15 @@ export const startLogout = () => {
 };
 
 export const login = (uid) => {
+  // logic
   return {
       type: 'LOGIN',
       uid: uid
   }
 }
 
-export const logout = (uid) => {
+export const logout = () => {
   return {
-      type: 'LOGOUT',
-      uid: uid
+      type: 'LOGOUT'
   }
 }

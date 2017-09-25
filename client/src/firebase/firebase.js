@@ -10,12 +10,10 @@ const config = {
   messagingSenderId: "24676371617"
 };
 
-firebase.initializeApp(config);
-const database = firebase.database();
+export const Firebase = firebase.initializeApp(config);
+export const database = firebase.database();
 
 // create instance of provider
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-
-export { firebase, googleAuthProvider, database as default };
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 
