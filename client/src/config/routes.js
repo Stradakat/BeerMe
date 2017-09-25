@@ -3,6 +3,7 @@ import {Router, Route, Switch} from 'react-router-dom'; // use BrowserRouter to 
 import HomePage from './../components/HomePage';
 import RecList from './../components/recList/reclist';
 import createHistory from 'history/createBrowserHistory';
+import logger from 'redux-logger'
 
 //Redux stuff
 import { createStore, applyMiddleware } from 'redux'
@@ -15,7 +16,7 @@ export const middleware = [ thunk ]
 
 export const store = createStore(
 	rootReducer,
-	applyMiddleware(...middleware, promise())
+	applyMiddleware(...middleware, promise(), logger)
 )
 
 // use our own history instead of BrowserRouter history
@@ -40,4 +41,3 @@ export const routes = (
         </Router>
     </Provider>
 );
-
