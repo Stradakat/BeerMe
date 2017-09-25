@@ -6,9 +6,6 @@ export const RECEIVE_BEERS = 'RECEIVE_BEERS';
 export const REQUEST_BREWERY = 'REQUEST_BREWERY';
 export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
 
-<<<<<<< HEAD
-
-=======
 export const requestBeers = () => {
   return dispatch => {
     axios.get("http://localhost:3001/API/survey3")
