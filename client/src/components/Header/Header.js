@@ -43,7 +43,6 @@ class Header extends Component {
                     <li>
                         <Button onClick={this.props.startLogout} id="logoutBtn" type="primary" size={this.state.size}>Logout<Icon type="logout" /></Button>
                     </li>
-                    <li><a className={window.location.pathname === "/profile" ? "menuWord active" : "menuWord"} href="#">Profile</a></li>
                     <li><a className={window.location.pathname === "/reclist" ? "menuWord active" : "menuWord"} href="#">Reccomendations</a></li>
                     <li><a className={window.location.pathname === "/breweries" ? "menuWord active" : "menuWord"} href="#">Breweries</a></li>
                 </ul>
