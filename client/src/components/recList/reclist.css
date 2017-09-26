@@ -27,11 +27,11 @@
 }
 
 .ant-rate-star-half .ant-rate-star-first, .ant-rate-star-full .ant-rate-star-second {
-	color: red;
+	color: #266a2e;
 }
 
 .reviewed .ant-rate-star-half .ant-rate-star-first, .blah .ant-rate-star-full .ant-rate-star-second {
-	color: blue;
+	color: #f0d86e;
 }
 
 #menu ul li a{

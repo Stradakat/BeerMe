@@ -15,36 +15,36 @@ const initialState = {
 	"toTry": [{
 		"type": "Random Beer",
 		"recs": [{
-				"name": "PBR",
-				"like": 4,
-				"pic": "https://dydza6t6xitx6.cloudfront.net/ci_1143.jpg",
-				"reviewed": false
-			},
-			{
-				"name": "Duff",
-				"like": 3,
-				"pic": "http://res.cloudinary.com/ratebeer/image/upload/w_250,c_limit/beer_112699.jpg",
-				"reviewed": false
-			},
-			{
-				"name": "Budweiser",
-				"like": 2,
-				"pic": "https://dydza6t6xitx6.cloudfront.net/ci_2822.jpg",
-				"reviewed": false
-			},
-			{
-				"name": "Bud Light",
-				"like": 5,
-				"pic": "http://www.totalwine.com/media/sys_master/twmmedia/h78/hf8/9770809884702.png",
-				"reviewed": false
-			},
-			{
-				"name": "Coors",
-				"like": 4,
-				"pic": "https://onlinecashandcarry.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/o/sol_beer_nrb_330ml.jpg",
-				"reviewed": false
+					"name": "PBR",
+					"like": 4,
+					"pic": "https://dydza6t6xitx6.cloudfront.net/ci_1143.jpg",
+					"reviewed": false
+				},
+				{
+					"name": "Duff",
+					"like": 3,
+					"pic": "http://res.cloudinary.com/ratebeer/image/upload/w_250,c_limit/beer_112699.jpg",
+					"reviewed": false
+				},
+				{
+					"name": "Budweiser",
+					"like": 2,
+					"pic": "https://dydza6t6xitx6.cloudfront.net/ci_2822.jpg",
+					"reviewed": false
+				},
+				{
+					"name": "Bud Light",
+					"like": 5,
+					"pic": "http://www.totalwine.com/media/sys_master/twmmedia/h78/hf8/9770809884702.png",
+					"reviewed": false
+				},
+				{
+					"name": "Coors",
+					"like": 4,
+					"pic": "https://onlinecashandcarry.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/o/sol_beer_nrb_330ml.jpg",
+					"reviewed": false
+				}]
 			}]
-	}]
 }
 
 const requestItems = (state = initialState, action) => {

@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { requestBeers } from '../../actions'
+import { Card, Rate, Icon } from 'antd';
 
-class Profile extends Component {
+class Survey extends Component {
 
 	constructor(props) {
 		super(props);
@@ -22,27 +26,29 @@ class Profile extends Component {
 		this.props.toTry[type].recs[beer].reviewed = true
 	}
 
-	createCards(h) {
+	createCards() {
 
 		let survey = []
-
-		for (let i = 0; i < this.props.toTry[h].recs.length; i++){
-			let beerRec = this.props.toTry[h].recs[i]
-			reccomends.push(
-				<div key={i}>
-					<Card bordered={false}>
-						<div>
-							<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
-						</div>
-						<div className="rating">
-							<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
-						</div>
-					</Card>
-				</div>
-			)
+		console.log(this.props)
+		for (let i = 0; i < this.props.toTry[i].length; i++){
+			for (let h = 0; h < this.props.toTry[i].recs.length; h++){
+				let beerRec = this.props.toTry[h].recs[i]
+				survey.push(
+					<div key={i}>
+						<Card bordered={false}>
+							<div>
+								<img className="beerImg" src={beerRec.pic} alt="beer"></img>
+							</div>
+							<div className="rating">
+								<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
+							</div>
+						</Card>
+					</div>
+				)
+			}
 		}
 
-		return reccomends
+		return survey
 	}
 
     render() {
@@ -57,4 +63,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default Survey;
