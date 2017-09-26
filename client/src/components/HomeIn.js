@@ -24,5 +24,4 @@ class Jumbo extends Component {
 	
 }
 
-
 export default Jumbo;
