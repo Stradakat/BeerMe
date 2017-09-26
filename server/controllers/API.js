@@ -66,13 +66,14 @@ router.get("/API/survey3", function(req, res){
 		function getBeers_func(next) {
 			Survey.find({})
 			.then(function(doc){
-				console.log(doc)
+//				console.log(doc)
 				next(null, doc)
 			});
 		},
 		function buildQuestions_func(doc, next) {
 			async function buildQuestions_subFunction() {
-				let beerListing = doc[0].beerShowcase;
+				let beerListing = doc[0].beerShowcase[0][0].beer; //we want to loop through the 3rd [0] eventually
+				console.log(beerListing)
 				for (const beerID of beerListing){
 					const response = await fetch(`${brewerydb_URL}/beers?key=${process.env.BREWERY_DB}&ids=${beerID}&format=json`)
 					const beerDetail = await response.json();
