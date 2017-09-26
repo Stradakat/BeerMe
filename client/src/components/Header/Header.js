@@ -40,9 +40,9 @@ class Header extends Component {
         } else {
             return (
                 <ul id="menu">
-                    <li><a className="menuWord" href="#">Profile</a></li>
-                    <li><a className="menuWord" href="#">Recommendations</a></li>
-                    <li><a className="menuWord" href="#">Breweries</a></li>
+                    <li><a className={window.location.pathname === "/profile" ? "menuWord active" : "menuWord"} href="#">Profile</a></li>
+                    <li><a className={window.location.pathname === "/reclist" ? "menuWord active" : "menuWord"} href="#">Reccomendations</a></li>
+                    <li><a className={window.location.pathname === "/breweries" ? "menuWord active" : "menuWord"} href="#">Breweries</a></li>
                     <li>
                         <Button onClick={this.props.startLogout} id="loginBtn" type="primary" size={this.state.size}>Logout<Icon type="logout" /></Button>
                     </li>
@@ -58,7 +58,7 @@ class Header extends Component {
                     <img id="logoImg" src={logo} alt="Beertentious logo"/>
                     <div id="appDiv">
                         <h1 id="appName">Beertentious</h1>
-                        <p>I don't drink that swill</p>
+                        <p>Life is too short to drink bad beer</p>
                     </div>
                 </div>
                 <nav>
