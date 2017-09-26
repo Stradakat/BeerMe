@@ -85,6 +85,7 @@ const receiveItems = (state = initialState, action) => {
 	}
 }
 
+
 const auth = (state = initialState, action) => {
     switch (action.type) {
         case 'LOGIN':
