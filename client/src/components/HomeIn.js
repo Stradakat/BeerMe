@@ -11,11 +11,11 @@ class Jumbo extends Component {
 				<Parallax bgImage={cheers} strength={500}>
 				</Parallax>
 				<h3 className="content">
-					Lorem ipsum dolor sit amet consectetur, adipiscing elit ac quisque, nisi bibendum blandit senectus. Eros massa dictum class torquent laoreet tristique, praesent fames lobortis iaculis non scelerisque vel, lacinia placerat et ornare at. Vulputate posuere vitae consequat fringilla malesuada dictum molestie viverra, senectus massa egestas neque ad nullam vel dis, ridiculus cubilia congue non pharetra quis venenatis, erat sagittis blandit tempus habitant urna justo.
+				How many times have you met friends at a micro-brewery and were confused by the beer selections and beer-nerd related descriptions?   We have simplified the process, by taking a brief survey where you rank beers you like in a 5 start scale Beertentious will recommend beers you are likely to enjoy.  So next time you are faced with a beer list that looks like an ancient elements table written in flemish, just pull out your phone and type in the brewery location.  Using a huge database Beertentious will then recommend several beers.  Easy as that!!!
 				</h3>
 				<br></br>
 				<h3 className="content">
-					Curae mi faucibus facilisi praesent vulputate accumsan pharetra mattis, ultrices scelerisque risus condimentum tempor natoque posuere vestibulum elementum, iaculis nam enim volutpat duis sed nostra. Sociis hendrerit congue varius porttitor faucibus convallis nascetur risus, id dui sollicitudin velit platea rhoncus nibh nec, mi quis cursus hac tristique posuere lobortis. Vel euismod nec cubilia orci augue per, morbi integer vitae libero sociosqu primis et, ut placerat nisl pharetra tellus.
+				Please take part in our brief survey page and you will be on the road to beer enjoyment without all of the BeerNerdTalk…..
 				</h3>
 			</div>
 		)

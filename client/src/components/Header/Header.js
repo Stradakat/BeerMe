@@ -62,7 +62,19 @@ class Header extends Component {
                     </div>
                 </div>
                 <nav>
-                    {this.userLoc()}
+                    <ul id="menu">
+                        <li>
+                            <div>
+                                {this.state.isLoggedIn ? (
+                                    <Button onClick={this.props.startLogout} id="loginBtn" type="primary" size={size}><Icon type="logout" />Logout</Button>
+                                ) : (
+                                    <Button onClick={this.props.startLogin} id="loginBtn" type="primary" size={size}><Icon type="login" />Login</Button>
+                                )}
+                            </div>
+                        </li>
+                        <li><a className="menuWord" href="#">About</a></li>
+                        <li><a className="menuWord" href="#">Contact</a></li>
+                    </ul>
                 </nav>
             </header>
         )
