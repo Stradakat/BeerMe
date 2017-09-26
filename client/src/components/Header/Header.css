@@ -89,6 +89,15 @@ header nav li {
     background-color: #266a2e;
     color: #f0d86e;
     padding: 5px 15px;
+    margin-right: 10px;
+}
+
+#logoutBtn {
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 20px;
+    background-color: #266a2e;
+    color: #f0d86e;
+    padding: 5px 15px;
 }
 
 .menuWord:hover {

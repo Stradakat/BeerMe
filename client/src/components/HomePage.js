@@ -23,7 +23,6 @@ class HomePage extends Component {
                 <Header />
                 <Jumbo />
                 <Beers />
-                    <img id="jumbo" src={cheers} />
                 <Footer />
             </div>
         )
