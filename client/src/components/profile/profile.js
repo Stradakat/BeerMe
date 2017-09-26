@@ -22,6 +22,14 @@ class Profile extends Component {
 		)
 	}
 
+	retReviewed() {
+		return (
+			<div>
+
+			</div>
+		)
+	}
+
     render() {
 		return (
             <div>
@@ -29,6 +37,8 @@ class Profile extends Component {
 				<div id="emptyDiv"></div>
 
                 {this.retProfile()}
+
+                {this.retReviewed()}
 
                 <Footer />
             </div>
