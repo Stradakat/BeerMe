@@ -7,7 +7,7 @@ export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
 
 export const requestBeers = () => {
   return dispatch => {
-    axios.get("http://localhost:3001/API/survey3")
+    axios.get(`/API/survey3`)
       .then(res => {
         console.log(res.data)
         const beers = res.data.map(beer => {
