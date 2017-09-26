@@ -8,11 +8,11 @@ export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
 
 export const requestBeers = () => {
   return dispatch => {
-    axios.get("http://localhost:3001/API/survey3")
+    axios.get(`/API/survey3`)
       .then(res => {
         console.log(res.data)
         const beers = res.data.map(beer => {
-          console.log(beer)          
+          console.log(beer)
           return beer
         })
         dispatch(receiveBeers(beers));
@@ -20,7 +20,6 @@ export const requestBeers = () => {
   }
 }
 /*
->>>>>>> 2a7e19d4af9c03f17399ef3fe6879a00410f8f5f
 export const requestBeers = user => ({
   "type": REQUEST_BEERS,
   "payload": axios("http://localhost:3001/API/survey3")
