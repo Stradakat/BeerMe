@@ -38,6 +38,7 @@ export const routes = (
                 <Route path="/" component={HomePage} exact={true} />
                 <Route path="/reclist" component={RecList} />
                 <Route path="/survey" component={Survey} />
+                {/* <Route path="/breweries" component={Breweries} /> */}
                 <Route component={NotFoundPage} />
             </Switch>
         </Router>
