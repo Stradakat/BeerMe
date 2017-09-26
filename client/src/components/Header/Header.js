@@ -40,9 +40,9 @@ class Header extends Component {
         } else {
             return (
                 <ul id="menu">
-                    <li><a className="menuWord" href="#">Profile</a></li>
-                    <li><a className="menuWord" href="#">Recommendations</a></li>
-                    <li><a className="menuWord" href="#">Breweries</a></li>
+                    <li><a className={window.location.pathname === "/profile" ? "menuWord active" : "menuWord"} href="#">Profile</a></li>
+                    <li><a className={window.location.pathname === "/reclist" ? "menuWord active" : "menuWord"} href="#">Reccomendations</a></li>
+                    <li><a className={window.location.pathname === "/breweries" ? "menuWord active" : "menuWord"} href="#">Breweries</a></li>
                     <li>
                         <Button onClick={this.props.startLogout} id="loginBtn" type="primary" size={this.state.size}>Logout<Icon type="logout" /></Button>
                     </li>
@@ -58,27 +58,11 @@ class Header extends Component {
                     <img id="logoImg" src={logo} alt="Beertentious logo"/>
                     <div id="appDiv">
                         <h1 id="appName">Beertentious</h1>
-                        <p>I don't drink that swill</p>
+                        <p>Life is too short to drink bad beer</p>
                     </div>
                 </div>
                 <nav>
-<<<<<<< HEAD
                     {this.userLoc()}
-=======
-                    <ul id="menu">
-                        <li>
-                            <div>
-                                {this.state.isLoggedIn ? (
-                                    <Button onClick={this.props.startLogout} id="loginBtn" type="primary" size={size}><Icon type="logout" />Logout</Button>
-                                ) : (
-                                    <Button onClick={this.props.startLogin} id="loginBtn" type="primary" size={size}><Icon type="login" />Login</Button>
-                                )}
-                            </div>
-                        </li>
-                        <li><a className="menuWord" href="#">About</a></li>
-                        <li><a className="menuWord" href="#">Contact</a></li>
-                    </ul>
->>>>>>> 2a7e19d4af9c03f17399ef3fe6879a00410f8f5f
                 </nav>
             </header>
         )
