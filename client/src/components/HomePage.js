@@ -21,7 +21,6 @@ class HomePage extends Component {
             <div>
                 <Header />
                 <Jumbo />
-                <Beers />
                 <Footer />
             </div>
         )
