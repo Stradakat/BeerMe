@@ -28,7 +28,7 @@ class RecList extends Component {
 	}
 
 	createCards(h) {
-
+		console.log(this.props)
 		let reccomends = []
 
 		for (let i = 0; i < this.props.toTry[h].recs.length; i++){

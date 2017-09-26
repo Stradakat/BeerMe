@@ -13,7 +13,7 @@ class Beers extends React.Component {
   render() {
     return (
       <div>
-        
+        Hello, I am alive.  Please set me free!
       </div>
     )
   }
