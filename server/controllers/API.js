@@ -5,11 +5,13 @@ https://stackoverflow.com/questions/18983138/callback-after-all-asynchronous-for
 */
 const express = require('express');
 const router = express.Router();
-const dotenv = require('dotenv').config();
+//const dotenv = require('dotenv').config();
 const request = require('request');
 const Survey = require('../models/Survey');
 const brewerydb_URL = "https://api.brewerydb.com/v2";
 const async = require('async');
+const fetch = require('node-fetch');
+const path = require('path');
 let beerQuestions = [];
 
 // API routes to run server side data
@@ -21,55 +23,71 @@ router.get("/API/recommendations", function(req, res) {
 	});	
 });
 
+router.get("/API/survey4", function(req, res){
+	let toTry = [{
+		type: "Random Beer",
+		recs: [{
+				name: "01",
+				like: 0,
+				pic: "https://dydza6t6xitx6.cloudfront.net/ci_1143.jpg",
+				reviewed: false
+			},
+			{
+				name: "02",
+				like: 0,
+				pic: "http://res.cloudinary.com/ratebeer/image/upload/w_250,c_limit/beer_112699.jpg",
+				reviewed: false
+			},
+			{
+				name: "Budweiser",
+				like: 0,
+				pic: "https://dydza6t6xitx6.cloudfront.net/ci_2822.jpg",
+				reviewed: false
+			},
+			{
+				name: "Bud Light",
+				like: 0,
+				pic: "http://www.totalwine.com/media/sys_master/twmmedia/h78/hf8/9770809884702.png",
+				reviewed: false
+			},
+			{
+				name: "Coors",
+				like: 4,
+				pic: "https://onlinecashandcarry.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/o/sol_beer_nrb_330ml.jpg",
+				reviewed: false
+			}]
+	}]
+	res.json(toTry);
+})
+	
 router.get("/API/survey3", function(req, res){
 	let beerShowcase = [];
 	async.waterfall([
 		function getBeers_func(next) {
 			Survey.find({})
 			.then(function(doc){
+				console.log(doc)
 				next(null, doc)
 			});
 		},
 		function buildQuestions_func(doc, next) {
-			let beerListing = doc[0].beerShowcase;
-
-			async.map(beerListing, beerDetails.bind(beerDetails), function(err, result){
-			})
-			console.log(beerListing)
-			
-			/*
-			async.eachLimit(beerListing, function(item, callback){
-				console.log(item)
-//				detail = `console.log(${item})`
-				detail = (function(item){
-					let url = `${brewerydb_URL}/beers?key=${process.env.BREWERY_DB}&ids=${beerID}&format=json`;
-					return url
-				})
-				beerShowcase.push(detail)
-				callback();
-//				beerDetails(item)	
-			}, function(err){
-				if(err) {
-					console.log("error")
+			async function buildQuestions_subFunction() {
+				let beerListing = doc[0].beerShowcase;
+				for (const beerID of beerListing){
+					const response = await fetch(`${brewerydb_URL}/beers?key=${process.env.BREWERY_DB}&ids=${beerID}&format=json`)
+					const beerDetail = await response.json();
+					const detail = {
+						"name": beerDetail.data[0].name,
+						"like": 4,
+						"pic": beerDetail.data[0].labels.large,
+						"reviewed": false
+					}
+					beerShowcase.push(detail);
 				}
-				else {
-					return beerShowcase
-				}
+			}
+			buildQuestions_subFunction().then(function(){
+				next(beerShowcase)
 			})
-*/
-			next(null, beerShowcase)
-			const beerDetails = (beerID) => {
-				let beerDetail;
-				let url = `${brewerydb_URL}/beers?key=${process.env.BREWERY_DB}&ids=${beerID}&format=json`;
-				console.log(url)
-				return url
-/*
-				request(url, function(error, response, body){
-					console.log(body)
-					return body;
-				}); 
-*/
-			};
 		}
 		],
 		function asyncComplete(err) {
@@ -136,6 +154,15 @@ router.post("/API/survey", function(req, res) {
 	  }).catch(function(err) {
 			res.json(err);
 	  });
+});
+
+router.get("/API/test", function(req, res) {
+	Survey.find({})
+	.then(function(doc) {
+		res.json(doc);
+	}).catch(function(err) {
+		res.json(err);
+	});
 });
 
 router.get("*", function(req, res) {

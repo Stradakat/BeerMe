@@ -4,57 +4,35 @@ import Header from '../Header';
 import Footer from '../Footer';
 import 'antd/dist/antd.css';
 import './reclist.css';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { requestBeers } from '../../actions'
 
 class RecList extends Component {
-	state = {
-		chosenModal: {},
-		visible: false,
-		toTry: [{
-				type: "Random Beer",
-				recs: [{
-						name: "PBR",
-						like: 4,
-						pic: "https://dydza6t6xitx6.cloudfront.net/ci_1143.jpg",
-						reviewed: false
-					},
-					{
-						name: "Duff",
-						like: 3,
-						pic: "http://res.cloudinary.com/ratebeer/image/upload/w_250,c_limit/beer_112699.jpg",
-						reviewed: false
-					},
-					{
-						name: "Budweiser",
-						like: 2,
-						pic: "https://dydza6t6xitx6.cloudfront.net/ci_2822.jpg",
-						reviewed: false
-					},
-					{
-						name: "Bud Light",
-						like: 5,
-						pic: "http://www.totalwine.com/media/sys_master/twmmedia/h78/hf8/9770809884702.png",
-						reviewed: false
-					},
-					{
-						name: "Coors",
-						like: 4,
-						pic: "https://onlinecashandcarry.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/o/sol_beer_nrb_330ml.jpg",
-						reviewed: false
-					}]
-			}]
+	constructor(props) {
+		super(props);
+		this.componentDidMount = this.componentDidMount.bind(this);
+	}
+	componentDidMount() {
+		console.log("component mounted")
+//		console.log(this)
+//		this.setState({beerListing: this.props.getBeerListing()})
+//		this.props.beerListing = this.props.getBeerListing();
+//		console.log(this.props)
+		this.props.getBeerListing();
 	}
 
 	rating(type, beer, rate) {
-		this.state.toTry[type].recs[beer].like = rate
-		this.state.toTry[type].recs[beer].reviewed = true
+		this.props.toTry[type].recs[beer].like = rate
+		this.props.toTry[type].recs[beer].reviewed = true
 	}
 
 	createCards(h) {
 
 		let reccomends = []
 
-		for (let i = 0; i < this.state.toTry[h].recs.length; i++){
-			let beerRec = this.state.toTry[h].recs[i]
+		for (let i = 0; i < this.props.toTry[h].recs.length; i++){
+			let beerRec = this.props.toTry[h].recs[i]
 			reccomends.push(
 				<div key={i}>
 					<Card bordered={false}>
@@ -74,13 +52,13 @@ class RecList extends Component {
 
 	createRows(){
 		let bars = []
-
-		for (let h = 0; h < this.state.toTry.length; h++){
+		console.log(this.props.toTry)
+		
+		for (let h = 0; h < this.props.toTry.length; h++){
 			bars.push(
 				<div key={h}>
-					<h1>{this.state.toTry[h].type}</h1>
+					<h1>{this.props.toTry[h].type}</h1>
 					<div  className="recBar">
-						
 			    		{this.createCards(h)}
 			    	</div>
 			    </div>
@@ -89,7 +67,6 @@ class RecList extends Component {
 
 		return bars
 	}
-
 
 	showModal = (beer) => {
 	    this.setState({
@@ -110,7 +87,6 @@ class RecList extends Component {
 	    });
 	}
 
-
 	render() {
 
 	    return (
@@ -119,8 +95,8 @@ class RecList extends Component {
 	    		<div id="emptySpace"></div>
 		    		{this.createRows()}
 		    	<Modal 
-		    		title={this.state.chosenModal.name}
-		    		visible={this.state.visible}
+		    		title={this.props.chosenModal.name}
+		    		visible={this.props.visible}
 		    		onOk={this.handleOk}
 		    		onCancel={this.handleCancel}
 		    		footer={[
@@ -130,20 +106,35 @@ class RecList extends Component {
      				<div>
      					<Card onClick={this.modalTest} >
 							<div>
-								<img className="beerImg" src={this.state.chosenModal.pic} alt="beer"></img>
+								<img className="beerImg" src={this.props.chosenModal.pic} alt="beer"></img>
 							</div>
 							<div className="rating">
-								<Rate className={this.state.chosenModal.reviewed ? "reviewed" : "notReviewed"} character={<Icon type="smile" />} defaultValue={this.state.chosenModal.like} />
+								<Rate className={this.props.chosenModal.reviewed ? "reviewed" : "notReviewed"} character={<Icon type="smile" />} defaultValue={this.props.chosenModal.like} />
 							</div>
 						</Card>
      				</div>
         		</Modal>
-
         		<Footer />
 		    </div>
-		    
 	    );
 	}
 }
 
-export default RecList;
+//connects root reducer to props
+function mapStateToProps(state) {
+	return {
+		beerListing: state.receiveItems.beerListing,
+		toTry: state.receiveItems.toTry,
+		chosenModal: state.receiveItems.chosenModal
+		
+	}
+}
+  
+//connects redux actions to props
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({
+		getBeerListing: requestBeers
+	}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecList);

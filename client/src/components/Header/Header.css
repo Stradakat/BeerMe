@@ -96,3 +96,8 @@ header nav li {
 .menuWord:hover {
     color:  #51bb7b;
 }
+
+.active {
+    text-shadow: 0 0 5px #51bb7b;
+    color: #51bb7b;
+}
