@@ -7,7 +7,7 @@ class Profile extends Component {
 
 	state = {
 		userPhoto: "http://strangebeaver.com/wp-content/uploads/2011/01/fb/1.jpg",
-		userName: "Lotta Brewski"
+		userName: "Lotte Brewski"
 	}
 
 	retProfile() {
