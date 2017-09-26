@@ -5,7 +5,7 @@ https://stackoverflow.com/questions/18983138/callback-after-all-asynchronous-for
 */
 const express = require('express');
 const router = express.Router();
-const dotenv = require('dotenv').config();
+//const dotenv = require('dotenv').config();
 const request = require('request');
 const Survey = require('../models/Survey');
 const brewerydb_URL = "https://api.brewerydb.com/v2";
