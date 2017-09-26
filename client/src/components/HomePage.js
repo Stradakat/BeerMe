@@ -9,7 +9,6 @@ import cheers from './cheers.jpg';
 import Jumbo from './HomeIn.js'
 import Beers from './../containers/beers'
 
-
 class HomePage extends Component {
 
     // constructor() {
