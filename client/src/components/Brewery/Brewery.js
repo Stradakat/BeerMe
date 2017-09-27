@@ -3,6 +3,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import 'antd/dist/antd.css';
 import "./Brewery.css";
+import cheers from '../cheers.jpg';
 // import { connect } from 'react-redux';
 
 // const mapStateToProps = (state) => {
@@ -15,13 +16,6 @@ class Brewery extends Component {
     // constructor(props) {
     //     super(props);
 
-    // // this.state = {
-    // //     size: 'large',
-    // //     isLoggedIn: false
-    // //   };
-    // // };
-    // }
-
     render() {
         
         return (
@@ -30,6 +24,9 @@ class Brewery extends Component {
                 <div className="empty-space">
                 </div>
                     <div className="all-content-container">
+                        <div className="brew-image-container">
+                            <img src={cheers} />
+                        </div>
                         <div className="brew-text-container">
                             <div className="brewery-name-container">
                                 <h1 className="brewery-name">Brewery Name</h1>

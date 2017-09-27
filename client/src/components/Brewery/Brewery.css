@@ -1,5 +1,6 @@
 .entire-page {
     background-color: #DE7575;
+    height: 100vh;
 }
 
 .empty-space{
@@ -9,16 +10,31 @@
 
 .all-content-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    /* max-width: 75%; */
 }
 
 .brew-text-container {
+    margin-top: 20px;
+    justify-content: space-around;
     background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
 }
 
 .brewery-name {
-    text-align: center;
+    font-family: 'Germania One', cursive;
+    font-size: 24px;
+    /* text-align: center; */
 }
+
+.brew-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    max-height: 300px;
+}
+
 
