@@ -25,7 +25,7 @@ class Brewery extends Component {
                 </div>
                     <div className="all-content-container">
                         <div className="brew-image-container">
-                            <img src={cheers} />
+                            <img className="brew-image" src={cheers} alt="brewery"/>
                         </div>
                         <div className="brew-text-container">
                             <div className="brewery-name-container">
@@ -33,6 +33,9 @@ class Brewery extends Component {
                             </div>
                             <div className="brewery-desc-container">
                                 <h2 className="brewery-desc">This is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blah</h2>
+                            </div>
+                            <div className="brewery-site-container">
+                                <a className="brewery-site-name" href="http://google.com">Visit this brewery's site!</a>
                             </div>
                         </div>
                     </div>

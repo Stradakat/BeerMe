@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import { routes, store, history, middleware } from './config/routes';
+import { routes, store, history } from './config/routes';
 import { Firebase, database } from './firebase/firebase';
 import { login, logout } from './actions/index';
 
@@ -18,7 +18,8 @@ const renderApp = () => {
 // fire everytime auth state changes and on initial app load
 Firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        store.dispatch(login(user.uid)); // gets uid into redux store
+        // gets uid into redux store
+        store.dispatch(login(user.uid));
         renderApp();
         database.ref(`/${user.uid}`).once('value', (snapshot) => {
             database.ref(`/${user.uid}`).set({
