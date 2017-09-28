@@ -40,8 +40,6 @@ export const receiveBrewery = (user) => ({
   user
 })
 
-// const history = createHistory();
-
 // start login popup
 export const startLogin = () => {
   return () => {
@@ -67,7 +65,6 @@ export const startLogout = () => {
 };
 
 export const login = (uid) => {
-  // logic
   return {
       type: 'LOGIN',
       uid: uid
