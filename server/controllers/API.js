@@ -71,19 +71,30 @@ router.get("/API/survey3", function(req, res){
 			});
 		},
 		function buildQuestions_func(doc, next) {
+
 			async function buildQuestions_subFunction() {
-				let beerListing = doc[0].beerShowcase[0][0].beer; //we want to loop through the 3rd [0] eventually
-				console.log(beerListing)
-				for (const beerID of beerListing){
-					const response = await fetch(`${brewerydb_URL}/beers?key=${process.env.BREWERY_DB}&ids=${beerID}&format=json`)
-					const beerDetail = await response.json();
-					const detail = {
-						"name": beerDetail.data[0].name,
-						"like": 4,
-						"pic": beerDetail.data[0].labels.large,
-						"reviewed": false
+				let beerGrouping = doc[0].beerShowcase[0];
+				for (const beerGroup of beerGrouping) {
+					let beerListing = beerGroup.beer;
+					let beerShowcaseItems = [];
+					for (const beerID of beerListing){
+						const response = await fetch(`${brewerydb_URL}/beers?key=${process.env.BREWERY_DB}&ids=${beerID}&format=json`)
+						const beerDetail = await response.json();
+						const detail = {
+							"name": beerDetail.data[0].name,
+							"id": beerDetail.data[0].id,
+							"like": 4,
+							"pic": beerDetail.data[0].labels.large,
+							"reviewed": false
+						}
+						beerShowcaseItems.push(detail);
 					}
-					beerShowcase.push(detail);
+					let beerShowcaseGrouping = {
+						"beerShowcaseName": beerGroup.category,
+						"beerShowcaseItems": beerShowcaseItems
+					}
+					beerShowcase.push(beerShowcaseGrouping);
+					console.log(beerShowcaseGrouping)
 				}
 			}
 			buildQuestions_subFunction().then(function(){
@@ -164,6 +175,10 @@ router.get("/API/test", function(req, res) {
 	}).catch(function(err) {
 		res.json(err);
 	});
+});
+
+router.get("/API/testJSON", function(req, res) {
+	res.sendFile(path.join(__dirname, "response.json"));
 });
 
 router.get("*", function(req, res) {

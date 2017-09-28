@@ -8,11 +8,9 @@ export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
 
 export const requestBeers = () => {
   return dispatch => {
-    axios.get(`/API/survey3`)
+    axios.get(`/API/testJSON`)
       .then(res => {
-        console.log(res.data)
         const beers = res.data.map(beer => {
-          console.log(beer)
           return beer
         })
         dispatch(receiveBeers(beers));
