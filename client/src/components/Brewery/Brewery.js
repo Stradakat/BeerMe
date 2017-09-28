@@ -12,7 +12,6 @@ import cheers from '../cheers.jpg';
 //   }
 
 class Brewery extends Component {
-
     // constructor(props) {
     //     super(props);
 
