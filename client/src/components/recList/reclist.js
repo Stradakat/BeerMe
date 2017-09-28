@@ -18,7 +18,6 @@ class RecList extends Component {
 //		console.log(this)
 //		this.setState({beerListing: this.props.getBeerListing()})
 //		this.props.beerListing = this.props.getBeerListing();
-//		console.log(this.props)
 		this.props.getBeerListing();
 	}
 
@@ -27,44 +26,41 @@ class RecList extends Component {
 		this.props.toTry[type].recs[beer].reviewed = true
 	}
 
-	createCards(h) {
-		console.log(this.props)
-		let reccomends = []
-
-		for (let i = 0; i < this.props.toTry[h].recs.length; i++){
-			let beerRec = this.props.toTry[h].recs[i]
-			reccomends.push(
-				<div key={i}>
-					<Card bordered={false}>
-						<div>
-							<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
-						</div>
-						<div className="rating">
-							<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
-						</div>
-					</Card>
-				</div>
-			)
-		}
+	createCards(h, recommendedBeers) {
+console.log("recommendedBeer = ", recommendedBeers[h])
+		let recommendedBeer = recommendedBeers[h]
+		let reccomends = [];
+		let beerRec = recommendedBeer
+		let i = 1;
+		reccomends.push(
+			<div key={`${h}_${i}`}>
+				<Card bordered={false}>
+					<div>
+						<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
+					</div>
+					<div className="rating">
+						<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
+					</div>
+				</Card>
+			</div>
+		)
 
 		return reccomends
 	}
 
-	createRows(){
+	createRows(item){
 		let bars = []
-		console.log(this.props.toTry)
-		
-		for (let h = 0; h < this.props.toTry.length; h++){
+		let reccommendations = item.recs;
+		for (let h = 0; h < reccommendations.length; h++){
 			bars.push(
 				<div key={h}>
-					<h1>{this.props.toTry[h].type}</h1>
+					<h1>{reccommendations[h].type}</h1>
 					<div  className="recBar">
-			    		{this.createCards(h)}
+			    		{this.createCards(h, reccommendations)}
 			    	</div>
 			    </div>
 		    )
 		}
-
 		return bars
 	}
 
@@ -93,7 +89,9 @@ class RecList extends Component {
 	    	<div>
 	    		<Header />
 	    		<div id="emptySpace"></div>
-		    		{this.createRows()}
+					{this.props.toTry[0].map(beerGroup => this.createRows(beerGroup))}
+					{/* {this.props.toTry[0].map()} */}
+
 		    	<Modal 
 		    		title={this.props.chosenModal.name}
 		    		visible={this.props.visible}
