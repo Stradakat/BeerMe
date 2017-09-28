@@ -8,7 +8,6 @@ import { startLogin, startLogout } from '../../actions/index';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // console.log('inside mapdispatchtoProps')
         startLogin: () => dispatch(startLogin()),
         startLogout:() => dispatch(startLogout())
     }
@@ -26,7 +25,7 @@ class Header extends Component {
 
     this.state = {
         size: 'large',
-        isLoggedIn: false
+        // isLoggedIn: false
       };
     };
 
@@ -43,8 +42,8 @@ class Header extends Component {
                     <li>
                         <Button onClick={this.props.startLogout} id="logoutBtn" type="primary" size={this.state.size}>Logout<Icon type="logout" /></Button>
                     </li>
-                    <li><a className={window.location.pathname === "/reclist" ? "menuWord active" : "menuWord"} href="#">Reccomendations</a></li>
-                    <li><a className={window.location.pathname === "/breweries" ? "menuWord active" : "menuWord"} href="#">Breweries</a></li>
+                    <li><a className={window.location.pathname === "/reclist" ? "menuWord active" : "menuWord"} href="/reclist">Recommendations</a></li>
+                    <li><a className={window.location.pathname === "/brewery" ? "menuWord active" : "menuWord"} href="/brewery">Breweries</a></li>
                 </ul>
             )
         }
@@ -57,7 +56,7 @@ class Header extends Component {
                     <img id="logoImg" src={logo} alt="Beertentious logo"/>
                     <div id="appDiv">
                         <h1 id="appName">Beertentious</h1>
-                        <p>Life is too short to drink bad beer</p>
+                        <p>Life's too short to drink bad beer</p>
                     </div>
                 </div>
                 <nav>
