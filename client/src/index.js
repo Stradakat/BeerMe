@@ -5,9 +5,8 @@ import registerServiceWorker from './registerServiceWorker';
 import { routes, store, history } from './config/routes';
 import { Firebase, database } from './firebase/firebase';
 import { login, logout } from './actions/index';
-import { LoadingSpinner } from './components/recList/LoadingSpinner';
 
-ReactDOM.render(<LoadingSpinner />, document.getElementById('root'));
+ReactDOM.render(<p>Loading the pretensh...</p>, document.getElementById('root'));
 
 let hasRendered = false;
 const renderApp = () => {
