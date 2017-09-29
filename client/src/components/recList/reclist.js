@@ -27,13 +27,13 @@ class RecList extends Component {
 	}
 
 	createCards(h, recommendedBeers) {
-console.log("recommendedBeer = ", recommendedBeers[h])
+		console.log("recommendedBeer = ", recommendedBeers[h])
 		let recommendedBeer = recommendedBeers[h]
 		let reccomends = [];
 		let beerRec = recommendedBeer
 		let i = 1;
 		reccomends.push(
-			<div key={`${h}_${i}`}>
+			<div id={`${h}_${i}`} key={`${h}_${i}`}>
 				<Card bordered={false}>
 					<div>
 						<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
