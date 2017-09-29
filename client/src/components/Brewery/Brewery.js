@@ -12,7 +12,6 @@ import { requestBrewery } from '../../actions'
 
 class Brewery extends Component {
 
-
     constructor(props) {
 		super(props);
 		this.componentDidMount = this.componentDidMount.bind(this);
@@ -22,11 +21,18 @@ class Brewery extends Component {
 		this.props.getBrewery("nMaqhu");
     }
 
-        createCards() {
+    createCards() {
         let brewCards = [];
-
-        for(var i = 0; i < this.state.breweries.length; i++) {
-            let brewRec = this.state.breweries[i]
+        let breweryList = [
+                            {"breweryID": "puznP2",
+                                "name": "brewery 1",
+                                "image": "image"},
+                            {"breweryID": "ygAzC9",
+                                "name": "brewery 2",
+                                "image": "image"}
+                        ]
+        for(var i = 0; i < breweryList.length; i++) {
+            let brewRec = breweryList[i]
             brewCards.push(
                 <div key={i}>
                     <Card bordered={true}>
@@ -41,9 +47,9 @@ class Brewery extends Component {
     }
 
     render() {
-        
         return (
             <div className="entire-page">
+                {console.log(this.props.breweryDetails)}
                 <Header />
                 <div className="empty-space"></div>
                 <div className="brewRow">
@@ -51,17 +57,17 @@ class Brewery extends Component {
                 </div>
                     <div className="all-content-container">
                         <div className="brew-image-container">
-                            <img className="brew-image" src={cheers} alt="brewery"/>
+                            <img className="brew-image" src={this.props.breweryDetails.images.large} alt="brewery"/>
                         </div>
                         <div className="brew-text-container">
                             <div className="brewery-name-container">
-                                <h1 className="brewery-name">Brewery Name</h1>
+                                <h1 className="brewery-name">{this.props.breweryDetails.name}</h1>
                             </div>
                             <div className="brewery-desc-container">
-                                <h2 className="brewery-desc">This is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blah</h2>
+                                <h2 className="brewery-desc">{this.props.breweryDetails.description}</h2>
                             </div>
                             <div className="brewery-site-container">
-                                <a className="brewery-site-name" href="http://google.com">Visit this brewery's site!</a>
+                                <a className="brewery-site-name" href={this.props.breweryDetails.website}>{this.props.breweryDetails.website}</a>
                             </div>
                         </div>
                     </div>
