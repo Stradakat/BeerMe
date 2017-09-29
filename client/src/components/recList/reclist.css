@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
+
 #emptySpace{
 	position: static;
 	height: 150px;
@@ -20,10 +22,13 @@
 .beerImg{
 	height: 200px;
 	width: auto;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .rating {
 	z-index: 10;
+	margin-left: 10px;
 }
 
 .ant-rate-star-half .ant-rate-star-first, .ant-rate-star-full .ant-rate-star-second {
@@ -40,4 +45,16 @@
 
 .active {
 	visibility: visible;
+}
+
+.beerType {
+	/*font-family: 'Ropa Sans', sans-serif;*/
+    font-family: 'Germania One', cursive;
+    margin-left: 15px;
+
+}
+
+#recWrapper {
+	width: 95%;
+	margin: 0 auto;
 }

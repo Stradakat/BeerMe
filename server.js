@@ -5,7 +5,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 //const dotenv = require('dotenv').config();
 const app = express();
-//require('dotenv').config();
+require('dotenv').config();
 // Send every request to the React app
 // Define any API routes before this runs
 //API routes

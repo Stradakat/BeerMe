@@ -60,3 +60,28 @@
 }
 
 
+.ant-card{
+    display: flex;
+    flex: 5;
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 250px;
+    align-items: center;
+}
+
+.brewRow {
+    position: static;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.brewImg{
+    /*height: 200px;*/
+    width: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    align-self: center;
+}

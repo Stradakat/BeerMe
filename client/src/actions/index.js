@@ -5,14 +5,15 @@ export const REQUEST_BEERS = 'REQUEST_BEERS';
 export const RECEIVE_BEERS = 'RECEIVE_BEERS';
 export const REQUEST_BREWERY = 'REQUEST_BREWERY';
 export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
+export const UPDATE_BEER = 'UPDATE_BEER';
+export const SAVED_BEER = 'SAVED_BEER';
+export const LOGIN = 'LOGIN';
 
 export const requestBeers = () => {
   return dispatch => {
-    axios.get(`/API/survey3`)
+    axios.get(`https://beertentiousapi.herokuapp.com/API/testJSON`)
       .then(res => {
-        console.log(res.data)
         const beers = res.data.map(beer => {
-          console.log(beer)
           return beer
         })
         dispatch(receiveBeers(beers));
@@ -30,14 +31,33 @@ export const receiveBeers = (beers) => ({
   "payload": beers
 })
 
-export const requestBrewery = (user) => ({
-  "type": REQUEST_BREWERY,
-  user
+export const requestBrewery = (breweryID) => {
+  return dispatch => {
+    axios.get(`https://beertentiousapi.herokuapp.com/API/testBrewery/${breweryID}`)
+      .then(res => {
+        const brewery = res.data;
+        dispatch(receiveBrewery(brewery));
+      })
+  }
+}
+
+export const receiveBrewery = (brewery) => ({
+  "type": RECEIVE_BREWERY,
+  "payload": brewery
 })
 
-export const receiveBrewery = (user) => ({
-  "type": RECEIVE_BREWERY,
-  user
+export const updateBeer = (type, beer, rate, userID) => {
+  return dispatch => {
+    axios.post(`https://beertentiousapi.herokuapp.com/API/saveRating?type=${type}&beer=${beer}&rate=${rate}&userID=${userID}`)
+      .then(res => {
+        dispatch(savedBeer(res));
+      })
+  }
+}
+
+export const savedBeer = (savedEntry) => ({
+  "type": SAVED_BEER,
+  "payload": savedEntry
 })
 
 // start login popup
@@ -66,8 +86,8 @@ export const startLogout = () => {
 
 export const login = (uid) => {
   return {
-      type: 'LOGIN',
-      uid: uid
+    "type": LOGIN,
+    "payload": uid
   }
 }
 
