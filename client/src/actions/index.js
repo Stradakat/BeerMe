@@ -28,14 +28,19 @@ export const receiveBeers = (beers) => ({
   "payload": beers
 })
 
-export const requestBrewery = (user) => ({
-  "type": REQUEST_BREWERY,
-  user
-})
+export const requestBrewery = (breweryID) => {
+  return dispatch => {
+    axios.get(`https://beertentiousapi.herokuapp.com/API/testBrewery/${breweryID}`)
+      .then(res => {
+        const brewery = res.data;
+        dispatch(receiveBrewery(brewery));
+      })
+  }
+}
 
-export const receiveBrewery = (user) => ({
+export const receiveBrewery = (brewery) => ({
   "type": RECEIVE_BREWERY,
-  user
+  "payload": brewery
 })
 
 // start login popup

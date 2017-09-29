@@ -22,8 +22,11 @@ class RecList extends Component {
 	}
 
 	rating(type, beer, rate) {
+		console.log(type, beer, rate)
+		/*
 		this.props.toTry[type].recs[beer].like = rate
 		this.props.toTry[type].recs[beer].reviewed = true
+*/
 	}
 
 	createCards(h, recommendedBeers) {
@@ -32,6 +35,7 @@ class RecList extends Component {
 
 		for(var i = 0; i < recommendedBeer.recs.length; i++) {
 			let beerRec = recommendedBeer.recs[i]
+			console.log(beerRec)
 			reccomends.push(
 				<div key={`${h}_${i}`}>
 					<Card bordered={false}>
@@ -39,7 +43,7 @@ class RecList extends Component {
 							<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
 						</div>
 						<div className="rating">
-							<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
+							<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, beerRec.id, rating)} />
 						</div>
 					</Card>
 				</div>
