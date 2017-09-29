@@ -1,3 +1,5 @@
+
+import { Card, Rate, Icon, Modal, Button } from 'antd';
 import React, { Component } from "react";
 import Header from '../Header';
 import Footer from '../Footer';
@@ -20,25 +22,46 @@ class Brewery extends Component {
 		this.props.getBrewery("nMaqhu");
     }
 
+        createCards() {
+        let brewCards = [];
+
+        for(var i = 0; i < this.state.breweries.length; i++) {
+            let brewRec = this.state.breweries[i]
+            brewCards.push(
+                <div key={i}>
+                    <Card bordered={true}>
+                        <div>
+                            <img className="brewImg" src={brewRec.img} alt={brewRec.name}></img>
+                        </div>
+                    </Card>
+                </div>
+            )
+        }
+        return brewCards
+    }
+
     render() {
+        
         return (
             <div className="entire-page">
                 <Header />
-                <div className="empty-space">
+                <div className="empty-space"></div>
+                <div className="brewRow">
+                    {this.createCards()}
                 </div>
                     <div className="all-content-container">
                         <div className="brew-image-container">
-                            <img className="brew-image" src={this.props.breweryDetails.images.large} alt="brewery"/>
+                            <img className="brew-image" src={cheers} alt="brewery"/>
                         </div>
                         <div className="brew-text-container">
                             <div className="brewery-name-container">
-                                <h1 className="brewery-name">{this.props.breweryDetails.name}</h1>
+                                <h1 className="brewery-name">Brewery Name</h1>
                             </div>
                             <div className="brewery-desc-container">
-                                <h2 className="brewery-desc">{this.props.breweryDetails.description}</h2>
+                                <h2 className="brewery-desc">This is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blah</h2>
                             </div>
                             <div className="brewery-site-container">
-                                <a className="brewery-site-name" href="{this.props.breweryDetails.website">{this.props.breweryDetails.website}</a>
+                                <a className="brewery-site-name" href="http://google.com">Visit this brewery's site!</a>
                             </div>
                         </div>
                     </div>
@@ -46,6 +69,7 @@ class Brewery extends Component {
             </div>
         );
     }
+}
 }
 
 //connects root reducer to props
