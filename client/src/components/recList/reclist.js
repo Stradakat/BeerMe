@@ -27,30 +27,30 @@ class RecList extends Component {
 	}
 
 	createCards(h, recommendedBeers) {
-		console.log("recommendedBeer = ", recommendedBeers[h])
-		let recommendedBeer = recommendedBeers[h]
 		let reccomends = [];
-		let beerRec = recommendedBeer
-		let i = 1;
-		reccomends.push(
-			<div id={`${h}_${i}`} key={`${h}_${i}`}>
-				<Card bordered={false}>
-					<div>
-						<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
-					</div>
-					<div className="rating">
-						<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
-					</div>
-				</Card>
-			</div>
-		)
+		let recommendedBeer = recommendedBeers[h]
 
+		for(var i = 0; i < recommendedBeer.recs.length; i++) {
+			let beerRec = recommendedBeer.recs[i]
+			reccomends.push(
+				<div key={`${h}_${i}`}>
+					<Card bordered={false}>
+						<div>
+							<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
+						</div>
+						<div className="rating">
+							<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
+						</div>
+					</Card>
+				</div>
+			)
+		}
 		return reccomends
 	}
 
 	createRows(item){
 		let bars = []
-		let reccommendations = item.recs;
+		let reccommendations = item;
 		for (let h = 0; h < reccommendations.length; h++){
 			bars.push(
 				<div key={h}>
@@ -89,9 +89,7 @@ class RecList extends Component {
 	    	<div>
 	    		<Header />
 	    		<div id="emptySpace"></div>
-					{this.props.toTry[0].map(beerGroup => this.createRows(beerGroup))}
-					{/* {this.props.toTry[0].map()} */}
-
+					{this.props.toTry.map(beerGroup => this.createRows(beerGroup))}
 		    	<Modal 
 		    		title={this.props.chosenModal.name}
 		    		visible={this.props.visible}

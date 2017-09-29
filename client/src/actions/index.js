@@ -8,7 +8,7 @@ export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
 
 export const requestBeers = () => {
   return dispatch => {
-    axios.get(`/API/testJSON`)
+    axios.get(`https://beertentiousapi.herokuapp.com/API/testJSON`)
       .then(res => {
         const beers = res.data.map(beer => {
           return beer
