@@ -3,7 +3,28 @@ import {REQUEST_BEERS, RECEIVE_BEERS, REQUEST_BREWERY, RECEIVE_BREWERY} from '..
 
 const initialState = {
 	"beers": [],
-	"breweries": [],
+	"breweryDetails": {
+			"id" : "CJ7aEv",
+			"name" : "BJ's Restaurant and Brewery",
+			"nameShortDisplay" : "BJ's Restaurant",
+			"description" : "To brew consistently great beer in a variety of ale and lager styles. That's really what BJ's beer is all about.\r\n\r\nAt BJ's we recognize that brewing is both an art and a science.\r\n\r\nWe also respect the vast variety of beer styles that the world has to offer - from the delicate balance of German Kolsch to the robust intensity of Russian Imperial Stout.\r\n\r\nOur Passionate and talented team of brewers strives toward one simple goal: to brew consistently great beer in a variety of ale and lager styles. That's really what BJ's beer is all about.",
+			"website" : "http://www.bjsrestaurants.com/",
+			"established" : "1978",
+			"isOrganic" : "N",
+			"images" : {
+				"icon" : "https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-icon.png",
+				"medium" : "https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-medium.png",
+				"large" : "https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-large.png",
+				"squareMedium" : "https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-squareMedium.png",
+				"squareLarge" : "https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-squareLarge.png"
+			},
+			"status" : "verified",
+			"statusDisplay" : "Verified",
+			"createDate" : "2012-01-03 02:41:46",
+			"updateDate" : "2017-06-28 13:39:08",
+			"isMassOwned" : "N",
+			"brandClassification" : "craft"
+	},
 	"beerListing": [],
 	"loading": false,
 	"user": {
@@ -58,7 +79,7 @@ const requestItems = (state = initialState, action) => {
 
 const receiveItems = (state = initialState, action) => {
 	let beers;
-	let breweries;
+	let breweryDetails= {"message":"READ ONLY MODE: Request Successful","data":{"id":"CJ7aEv","name":"BJ's Restaurant and Brewery","nameShortDisplay":"BJ's Restaurant","description":"To brew consistently great beer in a variety of ale and lager styles. That's really what BJ's beer is all about.\r\n\r\nAt BJ's we recognize that brewing is both an art and a science.\r\n\r\nWe also respect the vast variety of beer styles that the world has to offer - from the delicate balance of German Kolsch to the robust intensity of Russian Imperial Stout.\r\n\r\nOur Passionate and talented team of brewers strives toward one simple goal: to brew consistently great beer in a variety of ale and lager styles. That's really what BJ's beer is all about.","website":"http://www.bjsrestaurants.com/","established":"1978","isOrganic":"N","images":{"icon":"https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-icon.png","medium":"https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-medium.png","large":"https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-large.png","squareMedium":"https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-squareMedium.png","squareLarge":"https://s3.amazonaws.com/brewerydbapi/brewery/CJ7aEv/upload_Z20fd8-squareLarge.png"},"status":"verified","statusDisplay":"Verified","createDate":"2012-01-03 02:41:46","updateDate":"2017-06-28 13:39:08","isMassOwned":"N","brandClassification":"craft"},"status":"success"};
 	let toTry;
 	let beerListing;
 	
@@ -68,8 +89,9 @@ const receiveItems = (state = initialState, action) => {
 			toTry= [action.payload]
 			return {...state, loading: true, beerListing: beerListing, toTry: toTry}
 	  case RECEIVE_BREWERY:
-			breweries = action.payload.data.results;	
-			return {...state, loading: true, breweries}
+			breweryDetails = action.payload.data;
+//			console.log("breweryDetails = ", breweryDetails)
+			return {...state, loading: true, breweryDetails: breweryDetails}
 		default:
 			return state
 	}

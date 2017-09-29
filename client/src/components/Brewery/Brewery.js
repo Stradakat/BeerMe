@@ -1,45 +1,28 @@
+
+import { Card, Rate, Icon, Modal, Button } from 'antd';
 import React, { Component } from "react";
 import Header from '../Header';
 import Footer from '../Footer';
 import 'antd/dist/antd.css';
 import "./Brewery.css";
 import cheers from '../cheers.jpg';
-import { Card, Rate, Icon, Modal, Button } from 'antd';
-// import { connect } from 'react-redux';
-
-// const mapStateToProps = (state) => {
-//     return {
-//       isLoggedIn: this.state.isLoggedIn
-//   }
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { requestBrewery } from '../../actions'
 
 class Brewery extends Component {
-    
-    state = {
-        breweries: [{
-            name: "Stone",
-            img: "https://www.arlnow.com/wp-content/uploads/2013/10/Roommates-Brewery-logo.jpg"
-            },
-            {
-            name: "Mother Earth",
-            img: "https://ogn833g0ghx1x11kg4cgt3z4-wpengine.netdna-ssl.com/wp-content/uploads/2014/03/Pizza-Port-Brewing-Company.jpg"
-            },
-            {
-            name: "Belching Beaver",
-            img: "https://www.americancraftbeer.com/images/stories/article_images/2015/05/san-diego/belching_beaver.png"
-            },
-            {
-            name: "Culture",
-            img: "http://www.themomentumoffailure.com/wp-content/uploads/2014/12/moderntimeslogotm.png"
-            },
-            {
-            name: "Ballast Point",
-            img: "https://i.pinimg.com/736x/46/39/2c/46392c7ce7046ad03d6f19be648e57b0--beer-bar-vintage-logos.jpg"
-            },
-        ],
-        selected: {}
+
+
+    constructor(props) {
+		super(props);
+		this.componentDidMount = this.componentDidMount.bind(this);
+	}
+	componentDidMount() {
+		console.log("component mounted")
+		this.props.getBrewery("nMaqhu");
     }
 
-    createCards() {
+        createCards() {
         let brewCards = [];
 
         for(var i = 0; i < this.state.breweries.length; i++) {
@@ -87,5 +70,20 @@ class Brewery extends Component {
         );
     }
 }
+}
 
-export default Brewery;
+//connects root reducer to props
+function mapStateToProps(state) {
+    return {
+        breweryDetails: state.receiveItems.breweryDetails
+	}
+}
+  
+//connects redux actions to props
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({
+		getBrewery: requestBrewery
+	}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Brewery);
