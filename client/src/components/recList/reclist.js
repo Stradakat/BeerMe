@@ -54,7 +54,8 @@ class RecList extends Component {
 		for (let h = 0; h < reccommendations.length; h++){
 			bars.push(
 				<div key={h}>
-					<h1>{reccommendations[h].type}</h1>
+					<h1 className="beerType">{reccommendations[h].type}</h1>
+					<hr></hr>
 					<div  className="recBar">
 			    		{this.createCards(h, reccommendations)}
 			    	</div>
@@ -89,7 +90,9 @@ class RecList extends Component {
 	    	<div>
 	    		<Header />
 	    		<div id="emptySpace"></div>
+	    		<div id="recWrapper">
 					{this.props.toTry.map(beerGroup => this.createRows(beerGroup))}
+		    	</div>
 		    	<Modal 
 		    		title={this.props.chosenModal.name}
 		    		visible={this.props.visible}
