@@ -70,7 +70,7 @@ class Brewery extends Component {
         );
     }
 }
-}
+
 
 //connects root reducer to props
 function mapStateToProps(state) {
