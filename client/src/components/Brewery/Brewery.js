@@ -1,11 +1,10 @@
 
-import { Card, Rate, Icon, Modal, Button } from 'antd';
+import { Card } from 'antd';
 import React, { Component } from "react";
 import Header from '../Header';
 import Footer from '../Footer';
 import 'antd/dist/antd.css';
 import "./Brewery.css";
-import cheers from '../cheers.jpg';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { requestBrewery } from '../../actions'

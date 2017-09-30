@@ -40,7 +40,7 @@ class Survey extends Component {
 								<img className="beerImg" src={beerRec.pic} alt="beer"></img>
 							</div>
 							<div className="rating">
-								<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, i, rating)} />
+								<Rate rate-key={i} character={<Icon type="smile" />} onChange={(rating) => this.rating(h, i, rating)} />
 							</div>
 						</Card>
 					</div>
