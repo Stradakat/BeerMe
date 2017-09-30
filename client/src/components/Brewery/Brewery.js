@@ -12,26 +12,37 @@ import { requestBrewery } from '../../actions'
 
 class Brewery extends Component {
 
-
     constructor(props) {
 		super(props);
 		this.componentDidMount = this.componentDidMount.bind(this);
 	}
 	componentDidMount() {
 		console.log("component mounted")
-		this.props.getBrewery("nMaqhu");
+//		this.props.getBrewery("nMaqhu");
     }
 
-        createCards() {
-        let brewCards = [];
+	updateBrewery(breweryID) {
+		this.props.getBrewery(breweryID);
+    }
 
-        for(var i = 0; i < this.state.breweries.length; i++) {
-            let brewRec = this.state.breweries[i]
+    createCards() {
+        let brewCards = [];
+        let breweryList = [
+                            {"breweryID": "Nj8cgD",
+                                "name": "Green Flash",
+                                "image": "https://s3.amazonaws.com/brewerydbapi/brewery/Nj8cgD/upload_8QinVn-large.png"},
+                            {"breweryID": "ygAzC9",
+                                "name": "AleSmith",
+                                "image": "https://s3.amazonaws.com/brewerydbapi/brewery/ygAzC9/upload_KpBT5m-large.png"}
+                        ]
+        for(var i = 0; i < breweryList.length; i++) {
+            let brewRec = breweryList[i]
             brewCards.push(
                 <div key={i}>
-                    <Card bordered={true}>
+                    <Card bordered={true} onClick={() => this.updateBrewery(brewRec.breweryID)}>
                         <div>
-                            <img className="brewImg" src={brewRec.img} alt={brewRec.name}></img>
+                            {console.log(brewRec)}
+                            <img className="brewImg" src={brewRec.image} alt={brewRec.name}></img>
                         </div>
                     </Card>
                 </div>
@@ -41,7 +52,6 @@ class Brewery extends Component {
     }
 
     render() {
-        
         return (
             <div className="entire-page">
                 <Header />
@@ -49,28 +59,27 @@ class Brewery extends Component {
                 <div className="brewRow">
                     {this.createCards()}
                 </div>
-                    <div className="all-content-container">
-                        <div className="brew-image-container">
-                            <img className="brew-image" src={cheers} alt="brewery"/>
+                <div className="all-content-container">
+                    <div className="brew-image-container">
+                        <img className="brew-image" src={this.props.breweryDetails.images.large} alt="brewery"/>
+                    </div>
+                    <div className="brew-text-container">
+                        <div className="brewery-name-container">
+                            <h1 className="brewery-name">{this.props.breweryDetails.name}</h1>
                         </div>
-                        <div className="brew-text-container">
-                            <div className="brewery-name-container">
-                                <h1 className="brewery-name">Brewery Name</h1>
-                            </div>
-                            <div className="brewery-desc-container">
-                                <h2 className="brewery-desc">This is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blahThis is for the brewery description blah blah blah</h2>
-                            </div>
-                            <div className="brewery-site-container">
-                                <a className="brewery-site-name" href="http://google.com">Visit this brewery's site!</a>
-                            </div>
+                        <div className="brewery-desc-container">
+                            <h2 className="brewery-desc">{this.props.breweryDetails.description}</h2>
+                        </div>
+                        <div className="brewery-site-container">
+                            <a className="brewery-site-name" href={this.props.breweryDetails.website}>{this.props.breweryDetails.website}</a>
                         </div>
                     </div>
-                    <Footer />
+                </div>
+                <Footer />
             </div>
         );
     }
 }
-
 
 //connects root reducer to props
 function mapStateToProps(state) {

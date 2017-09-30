@@ -5,6 +5,9 @@ export const REQUEST_BEERS = 'REQUEST_BEERS';
 export const RECEIVE_BEERS = 'RECEIVE_BEERS';
 export const REQUEST_BREWERY = 'REQUEST_BREWERY';
 export const RECEIVE_BREWERY = 'RECEIVE_BREWERY';
+export const UPDATE_BEER = 'UPDATE_BEER';
+export const SAVED_BEER = 'SAVED_BEER';
+export const LOGIN = 'LOGIN';
 
 export const requestBeers = () => {
   return dispatch => {
@@ -43,6 +46,20 @@ export const receiveBrewery = (brewery) => ({
   "payload": brewery
 })
 
+export const updateBeer = (type, beer, rate, userID) => {
+  return dispatch => {
+    axios.post(`https://beertentiousapi.herokuapp.com/API/saveRating?type=${type}&beer=${beer}&rate=${rate}&userID=${userID}`)
+      .then(res => {
+        dispatch(savedBeer(res));
+      })
+  }
+}
+
+export const savedBeer = (savedEntry) => ({
+  "type": SAVED_BEER,
+  "payload": savedEntry
+})
+
 // start login popup
 export const startLogin = () => {
   return () => {
@@ -69,8 +86,8 @@ export const startLogout = () => {
 
 export const login = (uid) => {
   return {
-      type: 'LOGIN',
-      uid: uid
+    "type": LOGIN,
+    "payload": uid
   }
 }
 

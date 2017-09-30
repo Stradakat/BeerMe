@@ -6,8 +6,7 @@ import 'antd/dist/antd.css';
 import './reclist.css';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { requestBeers } from '../../actions'
-
+import { requestBeers, updateBeer } from '../../actions'
 class RecList extends Component {
 	constructor(props) {
 		super(props);
@@ -21,8 +20,9 @@ class RecList extends Component {
 		this.props.getBeerListing();
 	}
 
-	rating(type, beer, rate) {
-		console.log(type, beer, rate)
+	rating(type, beer, rate, userID) {
+		console.log(type, beer, rate, userID)
+		this.props.updateBeer(type, beer, rate, userID);
 		/*
 		this.props.toTry[type].recs[beer].like = rate
 		this.props.toTry[type].recs[beer].reviewed = true
@@ -43,7 +43,7 @@ class RecList extends Component {
 							<img className="beerImg" src={beerRec.pic} alt="beer" onClick={() => this.showModal(beerRec)}></img>
 						</div>
 						<div className="rating">
-							<Rate className={beerRec.reviewed ? "reviewed" : "notReviewed"} rate-key={i} character={<Icon type="smile" />} defaultValue={beerRec.like} onChange={(rating) => this.rating(h, beerRec.id, rating)} />
+							<Rate className={this.props.chosenModal.reviewed ? "reviewed" : "notReviewed"} character={<Icon type="smile" />} defaultValue={this.props.chosenModal.like} onChange={(rating) => this.rating(h, beerRec.id, rating, this.props.userAuth)}/>
 						</div>
 					</Card>
 				</div>
@@ -58,7 +58,7 @@ class RecList extends Component {
 		for (let h = 0; h < reccommendations.length; h++){
 			bars.push(
 				<div key={h}>
-					<h1>{reccommendations[h].type}</h1>
+					<h1 className="beerType">{reccommendations[h].type}</h1>
 					<div  className="recBar">
 			    		{this.createCards(h, reccommendations)}
 			    	</div>
@@ -93,7 +93,9 @@ class RecList extends Component {
 	    	<div>
 	    		<Header />
 	    		<div id="emptySpace"></div>
+	    		<div id="recWrapper">
 					{this.props.toTry.map(beerGroup => this.createRows(beerGroup))}
+		    	</div>
 		    	<Modal 
 		    		title={this.props.chosenModal.name}
 		    		visible={this.props.visible}
@@ -109,7 +111,7 @@ class RecList extends Component {
 								<img className="beerImg" src={this.props.chosenModal.pic} alt="beer"></img>
 							</div>
 							<div className="rating">
-								<Rate className={this.props.chosenModal.reviewed ? "reviewed" : "notReviewed"} character={<Icon type="smile" />} defaultValue={this.props.chosenModal.like} />
+								<Rate className={this.props.chosenModal.reviewed ? "reviewed" : "notReviewed"} character={<Icon type="smile" />} defaultValue={this.props.chosenModal.like} onChange={(rating) => this.rating(1, this.props.chosenModal.id, rating)}/>
 							</div>
 						</Card>
      				</div>
@@ -125,15 +127,16 @@ function mapStateToProps(state) {
 	return {
 		beerListing: state.receiveItems.beerListing,
 		toTry: state.receiveItems.toTry,
-		chosenModal: state.receiveItems.chosenModal
-		
+		chosenModal: state.receiveItems.chosenModal,
+		userAuth: state.auth.auth		
 	}
 }
   
 //connects redux actions to props
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
-		getBeerListing: requestBeers
+		getBeerListing: requestBeers,
+		updateBeer: updateBeer
 	}, dispatch);
 }
 

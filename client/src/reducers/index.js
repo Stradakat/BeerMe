@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import {REQUEST_BEERS, RECEIVE_BEERS, REQUEST_BREWERY, RECEIVE_BREWERY} from '../actions/index';
+import {REQUEST_BEERS, RECEIVE_BEERS, REQUEST_BREWERY, RECEIVE_BREWERY, LOGIN, UPDATE_BEER, SAVED_BEER} from '../actions/index';
 
 const initialState = {
+	"auth": {},	
 	"beers": [],
 	"breweryDetails": {
 			"id" : "CJ7aEv",
@@ -72,6 +73,10 @@ const requestItems = (state = initialState, action) => {
 			return {...state, loading: true}
 		case REQUEST_BREWERY:
 			return {...state, loading: true}
+		case UPDATE_BEER:
+			return {...state, loading: true}
+		case SAVED_BEER:
+			return {...state, loading: true}
 		default:
 			return state
 	}
@@ -100,10 +105,10 @@ const receiveItems = (state = initialState, action) => {
 
 const auth = (state = initialState, action) => {
     switch (action.type) {
-        case 'LOGIN':
-            return {
-                uid: action.uid
-            }
+		case 'LOGIN':
+			console.log(auth)
+			let auth = action.payload
+			return {...state, loading: true, auth: auth}
         case 'LOGOUT':
             return {};
         default:
