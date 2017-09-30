@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Firebase, googleAuthProvider } from '../firebase/firebase';
+import { history } from '../config/routes';
 // import createHistory from 'history/createBrowserHistory';
 export const REQUEST_BEERS = 'REQUEST_BEERS';
 export const RECEIVE_BEERS = 'RECEIVE_BEERS';
@@ -64,11 +65,12 @@ export const savedBeer = (savedEntry) => ({
 export const startLogin = () => {
   return () => {
       return Firebase.auth().signInWithPopup(googleAuthProvider)
-      .then((result) => {
-      // history.push('/reclist');
+      .then((user) => {
+          history.push('/survey');
+        // history.push('/reclist');
         // const token = result.credential.accessToken
         // console.log(token);
-        window.location.href = '/reclist';
+        // window.location.href = '/reclist';
       }).catch((e) => {
         console.log('Unable to log in!', e);
       });

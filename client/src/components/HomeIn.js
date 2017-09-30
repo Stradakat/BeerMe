@@ -18,7 +18,7 @@ class Jumbo extends Component {
                         <p className="intro-text">Be matched with beers you'll love in just 3 easy steps:</p>
                     </div>
                     
-                    <div className="cards-container">
+                    <div id="cards-container">
 
                         <Card className="card-container" style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
                             <i className="fa fa-question-circle icon" aria-hidden="true"></i>
