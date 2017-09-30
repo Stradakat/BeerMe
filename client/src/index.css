@@ -1,12 +1,72 @@
+
+.whole-page {
+	min-height: 100vh;
+}
+
 .react-parallax {
 	margin-top: 116px;
 	height: 400px;
 }
 
-.content {
-	font-family: 'Ropa Sans', sans-serif;
-	font-size: 25px;
-	width: 80%;
-	margin: 0 auto;
+.intro-container {
+	margin: 10px auto;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
+
+.intro-container p {
+	font-size: 22px;
+}
+
+.cards-container {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 40px;
+}
+
+.ant-card-body {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+	
+}
+
+.ant-card.card-container.ant-card-bordered {
+	border: 10px solid #e9e9e9;
+}
+
+.card-container {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 250px;
+}
+
+.icon {
+	font-size: 90px;
+	text-align: center;
+	margin-top: 40px;
+	color: #266a2e;
+}
+
+i.fa.fa-beer.icon::before {
+	margin-right: 10px;
+}
+
+.custom-card {
+	padding: 10px 16px;
+	margin: 25px auto 15px;
+	border-top: 2px solid black;
+}
+
+.tagline {
+	font-size: 24px;
+
+}
+
+/* .custom-card p {
+	color: #999;
+} */
+
 

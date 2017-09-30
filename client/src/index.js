@@ -6,7 +6,7 @@ import { routes, store, history } from './config/routes';
 import { Firebase, database } from './firebase/firebase';
 import { login, logout } from './actions/index';
 
-ReactDOM.render(<p>Loading The Pretensh...</p>, document.getElementById('root'));
+ReactDOM.render(<p>Loading the pretensh...</p>, document.getElementById('root'));
 
 let hasRendered = false;
 const renderApp = () => {
