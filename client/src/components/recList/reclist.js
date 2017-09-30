@@ -111,7 +111,7 @@ class RecList extends Component {
 								<img className="beerImg" src={this.props.chosenModal.pic} alt="beer"></img>
 							</div>
 							<div className="rating">
-								<Rate className={this.props.chosenModal.reviewed ? "reviewed" : "notReviewed"} character={<Icon type="smile" />} defaultValue={this.props.chosenModal.like} onChange={(rating) => this.rating(1, this.props.chosenModal.id, rating)}/>
+								<Rate character={<Icon type="smile" />} onChange={(rating) => this.rating(1, this.props.chosenModal.id, rating)}/>
 							</div>
 						</Card>
      				</div>
