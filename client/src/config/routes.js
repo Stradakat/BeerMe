@@ -5,7 +5,6 @@ import RecList from './../components/recList/reclist';
 import Survey from './../components/Survey/survey';
 import Brewery from './../components/Brewery/Brewery';
 import createHistory from 'history/createBrowserHistory';
-// import logger from 'redux-logger';
 
 //Redux stuff
 import { createStore, applyMiddleware } from 'redux'

@@ -37,8 +37,6 @@ Firebase.auth().onAuthStateChanged((user) => {
         renderApp();
         store.dispatch(logout(user.uid)); // wipes uid from redux store
         history.push('/');
-        // if (window.location.pathname !== '/') {
-        //     window.location.href = "/"; 
     }
 });
 

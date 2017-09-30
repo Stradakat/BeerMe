@@ -1,70 +1,45 @@
-# Create React Express App
+# Beertenious
 
-## About This Boilerplate
+Beertenious is a beer recommendation application.  The beer recommendation begins with the user loging in to create a profile.  Once the profile is created the user is asked to rate the beers via a 1-5 start rating system.  Based on the user input then a list of recommended beers is generated based on the user geographical input.  
 
-This setup allows for a monolithic Node/Express/React app which can be easily deployed to Heroku.
+## Getting Started
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+In order to start this application please go to:  
 
-## Starting the app locally
 
-Start by installing front and backend dependencies. While in this directory, run the following commands:
+## Deployment
 
-```
-yarn install
-cd client
-yarn install
-cd ..
-``
+This application was deployed on Heroku.
 
-After both installations complete, from the root of the project directory, run the following command in your terminal:
+## Built With
 
-```
-yarn start
-```
+* MERN Stack Mongo/Express/React/Node - The web framework used
+* FLEXBOX CSS
+* Ant Design Styling
+* React/Redux
+* BreweryDB API
 
-That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
 
-## Deployment (Heroku)
 
-### Create a Git Repo
+## Versioning
 
-Once you're ready to deploy, start by making sure your project is a git repository. If so, proceed to the next section, otherwise run the following commands in your terminal:
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Stradakat/BeerMe/graphs/contributors). 
 
-```
-git init
-git add .
-git commit -m "Initial commit"
-```
+## Authors
 
-### Heroku
+* **Chester Austin** - [chesteraustin][https://github.com/chesteraustin]
+* **Marc Munic** - [mfmunic][https://github.com/mfmunic]
+* **Vinson Ridenhour** - [vinson-ridenour][https://github.com/vinson-ridenour]
+* **Rick Felix** - [Stradakat][https://github.com/Stradakat]
 
-Make sure that you have a Heroku app created for this project. If so, proceed to the next section, otherwise run the following command in your terminal:
+See also the list of [contributors](https://github.com/Stradakat/BeerMe/graphs/contributors) who participated in this project.
 
-```
-heroku create
-```
+## License
 
-Optionally add an argument for your application's name after `create`, e.g.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-```
-heroku myawesomeapp
-```
+## Acknowledgments
 
-### Deploying
-
-After confirming that you have an up to date git repository and a Heroku app created, run the following command to deploy:
-
-```
-yarn deploy
-```
-
-If all previous steps were followed correctly, your application should be deployed to Heroku!
-
-## Procfile
-
-* What's the Procfile for?
-
-  * By default Heroku will run the "start" script on a deployed node application. In our case, the "start" script in the `package.json` isn't going to work because it's running the webpack development server.
-
-  * The Profile takes precedence over the `npm start` command and tells Heroku what command to run instead. 
+* BreweryDB API
+* Beer
+* Homer Simpson
